@@ -10,9 +10,6 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 .logo {
@@ -22,16 +19,21 @@
 .element {
     font-size: var(--normal);
     text-align: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
 }
 
 .link {
     text-decoration: none;
     text-transform: uppercase;
     color: white;
+    height: 4em;
+    display: flex;
+    align-items: center;
 }
 
 .link_active {
     @extend .link;
-    padding-bottom: 1em;
     border-bottom: 4px solid var(--third-color);
 }

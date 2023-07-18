@@ -32,7 +32,9 @@ export default function NavBar () {
                 {categories.map((category) => 
                     (
                         <div className={style.element}>
-                            <Link key={category} className={`${params.slug===category ? style.link_active : style.link}`} href={`/${category}`}>{category}</Link>
+                            <Link key={category} className={`${params.slug===category ? style.link_active : style.link}`} href={`/${category}`}>
+                                {category}
+                            </Link>
                         </div>
                     )
                 )}
