@@ -1,0 +1,43 @@
+//Difficulty component style
+.main {
+    padding-bottom: 2em;
+    border-bottom: 5px solid var(--second-color);
+}
+
+.mainTitle {
+    font-weight: var(--medium);
+    font-size: var(--title2);
+}
+
+.container {
+    margin-top: 1.5em;
+}
+
+//Section component style
+.section {
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    font-size: var(--normal);
+}
+
+.checkbox {
+    margin-right: 15px;
+    margin-left: 5px;
+    padding-top: 4px;
+    transform: scale(1.7);
+}
+
+.checkboxInput:checked {
+    accent-color: var(--second-color);
+    background-color: var(--second-color);
+}
+
+.starContainer {
+    width: 45%;
+}
+
+.starContainer * {
+    margin-right: 12px;
+}
+

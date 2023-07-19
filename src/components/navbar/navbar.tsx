@@ -31,8 +31,8 @@ export default function NavBar () {
             <div className={style.container}>
                 {categories.map((category) => 
                     (
-                        <div className={style.element}>
-                            <Link key={category} className={`${params.slug===category ? style.link_active : style.link}`} href={`/${category}`}>
+                        <div key={category} className={style.element}>
+                            <Link key={category} className={`${params.category===category ? style.link_active : style.link}`} href={`/${category}`}>
                                 {category}
                             </Link>
                         </div>
