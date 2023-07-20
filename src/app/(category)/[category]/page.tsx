@@ -1,14 +1,14 @@
 import Link from "next/link";
-import Moves from "./moves";
+import Moves from "../../../assets/datas/moves.tsx";
 import styles from "./page.module.scss";
+import CategoryCard from "@/components/categoryCard/categoryCard";
 
 export default function Page({ params }: { params: { category: string } }) {
     return (
       <div className={styles.main}>
-        <h1 className={styles.mainTitle}>Category</h1>
         <div className={styles.cardsContainer}>
           {Moves.map((move) => 
-            <Link key={move.id} href={`/${params.category}/${move.title}`}>{move.title}<br /></Link>
+            <CategoryCard {...move}/>
           )}
         </div>
       </div>

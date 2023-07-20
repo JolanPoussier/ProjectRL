@@ -1,16 +1,12 @@
-import Image from "next/image";
+"use client"
+
 import style from "./page.module.scss";
+import Image from "next/image";
 import starImage from "src/assets/star/star.png"; 
+import starGenerator from "@/assets/functions/starGenerator";
 
 
 export default function Section ({star, difficulty, ranks}: {star: number, difficulty: string, ranks: string} ) {
-
-    const stars = [];
-
-    for (let index = 0; index < star; index++) {
-        stars.push(<Image src={starImage} alt="Etoile" width={30} height={30}/>)
-    }
-
     return (
         <div className={style.section}>
             <div className={style.checkbox}>
@@ -22,7 +18,7 @@ export default function Section ({star, difficulty, ranks}: {star: number, diffi
                 />
             </div>
             <div className={style.starContainer}>
-                {stars}
+                {starGenerator({star})}
             </div>
             <div className={style.rankContainer}>
                 {difficulty}
