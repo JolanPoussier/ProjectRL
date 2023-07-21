@@ -1,14 +1,16 @@
 'use client'
-import Link from "next/link";
+
+import MoveCard from "@/components/moveCard/moveCard";
+import moves from "@/assets/datas/moves.ts";
 import style from "./page.module.scss";
 
-export default function Page({ params }: { params: { category: string } }) {
+export default function Page({ params }: { params: { category: string, move: string } }) {
+
+  let moveToDisplay = moves.filter(moveToFilter => moveToFilter.slug === params.move)
+
     return (
       <div className={style.main}>
-        <h1>Hello, move page!</h1>
-        <Link href="/">Home<br /></Link>
-        <Link href="/category">Back<br /></Link>
-        <p>{params.category}<br /></p>
+        <MoveCard {...moveToDisplay[0]}/>
       </div>
       )
   }

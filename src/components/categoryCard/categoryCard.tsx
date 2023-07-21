@@ -12,7 +12,7 @@ export default function CategoryCard ({ title, category, description, image, id,
         <div className={style.card}>
             <Link className={style.link} href={`/${category}/${slug}`} >
                 <div className={style.imageContainer}>
-                    <Image className={style.image} alt={`Image du move ${title}`} src={image} width={200} height={200}/>
+                    <Image className={style.image} alt={`Image du move ${title}`} src={image} width={150} height={150}/>
                 </div>
                 <div className={style.content}>
                     <div className={style.header}>

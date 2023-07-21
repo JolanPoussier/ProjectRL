@@ -1,28 +1,17 @@
 .card {
-    width: 90%;
-    height: 150px;
+    width: 80%;
+    margin: auto;
+    // margin-left: 0;
+    max-width: 1000px;
     background-color: var(--second-color);
     border-radius: 12px;
-    margin-bottom: 3em;
-}
-
-.link {
-    color: white;
-    text-decoration: none;
-    display: flex;
-}
-
-.image {
-    border-radius: 12px 0 0 12px;
-    object-fit: cover;
-}
-
-.content {
     padding: 2em;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     display: flex;
     align-items: center;
 }
@@ -37,6 +26,13 @@
     margin-right: 4px;
 }
 
-.description {
+.image {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 1.5em;
+}
+
+.text {
     font-size: var(--normal);
+    line-height: 1.5em;
 }

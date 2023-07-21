@@ -1,6 +1,6 @@
 import Link from "next/link";
 import style from "./page.module.scss";
-import moves from "@/assets/datas/moves.tsx";
+import moves from "@/assets/datas/moves.ts";
 
 export default function Shortcuts () {
     return (
