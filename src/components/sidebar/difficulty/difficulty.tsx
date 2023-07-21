@@ -35,7 +35,7 @@ export default function Difficulty () {
             <div className={style.container}>
                 {difficulty.map((level) => 
                 (
-                    <Section {...level} />
+                    <Section key={level.ranks} {...level} />
                 ))}
 
             </div>

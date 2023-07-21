@@ -1,3 +1,5 @@
+"use client"
+
 import style from "./page.module.scss";
 
 export default function Input () {
@@ -5,7 +7,7 @@ export default function Input () {
         <div className={style.inputContainer}>
             <input 
                 className={style.input}
-                placeholder="Trouves ta méchanique" 
+                placeholder="  Trouves ta méchanique" 
                 type="text" 
                 // value={inputValue} 
                 // onChange={handleInputChange} 

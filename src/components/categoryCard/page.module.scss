@@ -1,0 +1,42 @@
+.card {
+    width: 90%;
+    height: 150px;
+    background-color: var(--second-color);
+    border-radius: 12px;
+    margin-bottom: 3em;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+}
+
+.image {
+    border-radius: 12px 0 0 12px;
+    object-fit: cover;
+}
+
+.content {
+    padding: 2em;
+}
+
+.header {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--title1);
+    font-weight: var(--semi-bold);
+    margin-right: 15px;
+}
+
+.stars * {
+    margin-right: 4px;
+}
+
+.description {
+    font-size: var(--normal);
+}

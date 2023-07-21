@@ -1,0 +1,38 @@
+.card {
+    width: 80%;
+    margin: auto;
+    // margin-left: 0;
+    max-width: 1000px;
+    background-color: var(--second-color);
+    border-radius: 12px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--title1);
+    font-weight: var(--semi-bold);
+    margin-right: 15px;
+}
+
+.stars * {
+    margin-right: 4px;
+}
+
+.image {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 1.5em;
+}
+
+.text {
+    font-size: var(--normal);
+    line-height: 1.5em;
+}

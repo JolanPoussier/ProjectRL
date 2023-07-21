@@ -5,8 +5,8 @@ import style from "./page.module.scss";
 export default function Page() {
     return (
     <div className={style.main}>
-      <h1>Hello, Home page!</h1>
-      <Link href={'/category'}>Page catégorie</Link>
+      {/* <h1>Hello, Home page!</h1>
+      <Link href={'/category'}>Page catégorie</Link> */}
     </div>
     )
   }

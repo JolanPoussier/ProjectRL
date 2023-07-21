@@ -1,4 +1,5 @@
 import Sidebar from "@/components/sidebar/sidebar";
+import style from "./page.module.scss";
 
 export default function categoryLayout({
     children, // will be a page or nested layout
@@ -6,10 +7,12 @@ export default function categoryLayout({
     children: React.ReactNode
   }) {
     return (
-      <section>
+      <section className={style.layout}>
         {/* Include shared UI here e.g. a header or sidebar */}
         <Sidebar />
-        {children}
+        <div className={style.layoutContent}>
+          {children}
+        </div>
       </section>
     )
   }
