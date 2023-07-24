@@ -4,7 +4,7 @@ import Link from 'next/link';
 import style from './page.module.scss';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import logo from "src/assets/logo/logo.png";
+import logo from "src/assets/logo/logoMobile.png";
 import categories from '@/assets/datas/categories';
 
 export default function NavBar () {
@@ -15,7 +15,7 @@ export default function NavBar () {
         <div className={style.main}>
             <div className={style.logo}>
                 <Link href={"/"}>
-                    <Image src={logo} alt="Logo du site" width={240} height={60}/>
+                    <Image src={logo} alt="Logo du site" width={70} height={70}/>
                 </Link>
             </div>
             <div className={style.container}>

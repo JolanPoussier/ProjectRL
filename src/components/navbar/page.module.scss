@@ -4,7 +4,7 @@
     background-color: var(--second-color);
     display: flex;
     padding-left: 0.5em;
-    position: fixed;
+    position: relative;
 }
 
 .container {
@@ -37,4 +37,16 @@
 .link_active {
     @extend .link;
     border-bottom: 4px solid var(--third-color);
+}
+
+
+// mobile Navbar
+
+.mobileContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bm-burger-button {
+    
 }

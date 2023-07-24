@@ -1,6 +1,7 @@
 import NavBar from '@/components/navbar/navbar';
 import './globals.scss';
 import { League_Spartan } from 'next/font/google';
+import MobileNavBar from '@/components/navbar/mobileNavbar';
 
 const leagueSpartan = League_Spartan({ subsets: ['latin'] })
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={leagueSpartan.className}>
         <NavBar />
+        {/* <MobileNavBar /> */}
         {children}
         </body>
     </html>
