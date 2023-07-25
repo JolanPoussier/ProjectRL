@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import style from "./page.module.scss";
-import starGenerator from "@/assets/functions/starGenerator";
+import starGenerator from "@/utils/functions/starGenerator";
 import Link from "next/link";
 
 export default function CategoryCard ({ title, category, description, image, id, difficulty, slug }: { title: string, category: string, description: string, image: StaticImageData, id: number, difficulty: number, slug: string}) {

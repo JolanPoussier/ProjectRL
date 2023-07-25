@@ -1,7 +1,7 @@
 'use client'
 
 import MoveCard from "@/components/moveCard/moveCard";
-import moves from "@/assets/datas/moves.ts";
+import moves from "@/utils/datas/moves";
 import style from "./page.module.scss";
 
 export default function Page({ params }: { params: { category: string, move: string } }) {

@@ -2,6 +2,7 @@ import NavBar from '@/components/navbar/navbar';
 import './globals.scss';
 import { League_Spartan } from 'next/font/google';
 import MobileNavBar from '@/components/navbar/mobileNavbar';
+import { CheckboxProvider } from '../contexts/CheckboxContext';
 
 const leagueSpartan = League_Spartan({ subsets: ['latin'] })
 
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body className={leagueSpartan.className}>
         <NavBar />
         {/* <MobileNavBar /> */}
-        {children}
+        <CheckboxProvider>
+          {children}
+        </CheckboxProvider>
         </body>
     </html>
   )
