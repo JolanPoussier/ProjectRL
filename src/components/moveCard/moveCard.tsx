@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import style from "./page.module.scss";
-import starGenerator from "@/assets/functions/starGenerator";
+import starGenerator from "@/utils/functions/starGenerator";
 
 
 export default function MoveCard ({ title, text, image, id, difficulty, slug }: { title: string, text: string, image: StaticImageData, id: number, difficulty: number, slug: string}) {

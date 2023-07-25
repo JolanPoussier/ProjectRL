@@ -5,7 +5,7 @@ import style from './page.module.scss';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import logo from "src/assets/logo/logo.png";
-import categories from '@/assets/datas/categories';
+import categories from '@/utils/datas/categories';
 
 export default function NavBar () {
 
