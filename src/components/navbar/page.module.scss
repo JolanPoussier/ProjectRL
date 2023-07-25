@@ -82,7 +82,10 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: white;
+}
+
+.sideBarButton {
+    @extend .burgerButton;
 }
 
 .closeButton {
@@ -91,6 +94,7 @@
     top: 5px;
     left: 25px;
     font-size: 36px;
+    color: white;
 }
 
 .overlayMobile {

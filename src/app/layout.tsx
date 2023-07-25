@@ -20,8 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={leagueSpartan.className}>
         {/* <NavBar /> */}
-        <MobileNavBar />
         <CheckboxProvider>
+          <MobileNavBar />
           {children}
         </CheckboxProvider>
         </body>
