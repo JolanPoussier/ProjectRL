@@ -1,3 +1,7 @@
+///////////////
+/// COMP Navbar
+///////////////
+
 .main {
     width: 100%;
     height: 5em;
@@ -47,7 +51,10 @@
     @extend .main;
     justify-content: space-between;
     z-index: 2;
+    padding: 0 1em;
 }
+
+//BURGER M
 
 .menuBurger {
     height: 100%;
@@ -78,6 +85,18 @@
     margin-top: 2em;
 }
 
+.linkMobile_active {
+    @extend .link_active;
+    height: 2em;
+}
+
+.linkMobile {
+    @extend .link;
+    height: 2em;
+}
+
+//BUTTONS
+
 .burgerButton {
     background-color: transparent;
     border: none;
@@ -86,6 +105,7 @@
 
 .sideBarButton {
     @extend .burgerButton;
+    padding-left: 5px; 
 }
 
 .closeButton {
@@ -96,6 +116,8 @@
     font-size: 36px;
     color: white;
 }
+
+//OVERLAY
 
 .overlayMobile {
     position: fixed;

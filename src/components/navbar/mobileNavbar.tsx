@@ -26,10 +26,6 @@ export default function NavBar () {
         setdisplaySideMenu(!displaySideMenu)
     }
 
-    useEffect(() =>{
-        setdisplaySideMenu(!displaySideMenu)
-    }, [params.move])
-
     return (
         
         <div className={style.mainMobile}>
@@ -38,11 +34,12 @@ export default function NavBar () {
             <button className={style.sideBarButton} onClick={handleDisplaySideMenu}>
                     <Image src={sidebarArrow} alt="Logo du site" width={35} height={35}/>
             </button>
+
             <SidebarMobile displaySideMenu={displaySideMenu} displayFunc={() => setdisplaySideMenu(!displaySideMenu)}/>
 
             <div className={style.logo}>
                 <Link href={"/"}>
-                    <Image src={logo} alt="Logo du site" width={70} height={70}/>
+                    <Image src={logo} alt="Logo du site" width={90} height={90}/>
                 </Link>
             </div>
 
@@ -56,7 +53,7 @@ export default function NavBar () {
                     {categories.map((category) => 
                         (
                             <div key={category} className={style.elementMobile}>
-                                <Link onClick={handleToggleBurger} key={category} className={params.category===category ? style.link_active : style.link} href={`/${category}`}>
+                                <Link onClick={handleToggleBurger} key={category} className={params.category===category ? style.linkMobile_active : style.linkMobile} href={`/${category}`}>
                                     {category}
                                 </Link>
                             </div>

@@ -41,3 +41,15 @@
     margin-right: 12px;
 }
 
+//RESPONSIVE
+
+@media screen and (max-width: 500px) {
+    .section {
+        flex-wrap: wrap;
+        margin-bottom: 1em;
+    }
+    .section div:last-child {
+        width: 100%;
+        padding-top: 5px;
+    }
+}

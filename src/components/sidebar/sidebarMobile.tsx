@@ -14,7 +14,7 @@ export default function SidebarMobile ({ displaySideMenu, displayFunc }: {displa
             <button className={style.closeButton} onClick={handleToggleSide}>x</button>
             <Input />
             <Difficulty />
-            <Shortcuts />
+            <Shortcuts displayFunc={displayFunc} />
         </div>
     )
 }
