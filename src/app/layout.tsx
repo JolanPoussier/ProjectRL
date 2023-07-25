@@ -19,8 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={leagueSpartan.className}>
-        <NavBar />
-        {/* <MobileNavBar /> */}
+        {/* <NavBar /> */}
+        <MobileNavBar />
         <CheckboxProvider>
           {children}
         </CheckboxProvider>
