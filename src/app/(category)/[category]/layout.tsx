@@ -7,6 +7,7 @@ export default function categoryLayout({
     children: React.ReactNode
   }) {
     return (
+
       <section className={style.layout}>
         {/* Include shared UI here e.g. a header or sidebar */}
         <Sidebar />

@@ -15,13 +15,13 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) {  
   return (
     <html lang="en">
       <body className={leagueSpartan.className}>
-        {/* <NavBar /> */}
         <CheckboxProvider>
-          <MobileNavBar />
+           {/* <MobileNavBar /> */}
+           <NavBar /> 
           {children}
         </CheckboxProvider>
         </body>

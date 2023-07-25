@@ -2,10 +2,12 @@ import Link from "next/link";
 import style from "./page.module.scss";
 import moves from "@/utils/datas/moves";
 
-export default function Shortcuts ({displayFunc}: {displayFunc: Function}) {
+export default function Shortcuts ({displayFunc}: {displayFunc?: Function}) {
 
     const handleClick = () => {
-        displayFunc();
+        if(displayFunc){
+            displayFunc();
+        }
     }  
 
     return (

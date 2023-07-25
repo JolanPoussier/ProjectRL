@@ -40,3 +40,10 @@
 .description {
     font-size: var(--normal);
 }
+
+@media screen and (max-width: 1000px) {
+    .card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

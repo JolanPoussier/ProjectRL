@@ -1,3 +1,5 @@
+"use client"
+
 import style from "./page.module.scss";
 import Difficulty from "./difficulty/difficulty";
 import Input from "./input/input";

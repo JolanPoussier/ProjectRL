@@ -11,7 +11,7 @@ import categories from '@/utils/datas/categories';
 import { useEffect, useState } from 'react';
 import SidebarMobile from '../sidebar/sidebarMobile';
 
-export default function NavBar () {
+export default function MobileNavBar () {
 
     const params = useParams();
 
