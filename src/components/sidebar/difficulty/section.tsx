@@ -1,3 +1,5 @@
+"use client"
+
 import style from "./page.module.scss";
 import starGenerator from "@/utils/functions/starGenerator";
 import Checkbox from "@/UI/checkbox/checkbox";

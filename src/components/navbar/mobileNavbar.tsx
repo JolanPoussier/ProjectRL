@@ -27,7 +27,6 @@ export default function MobileNavBar () {
     }
 
     return (
-        
         <div className={style.mainMobile}>
             <div className={toggleBurger ? style.overlayMobile_active : style.overlayMobile} onClick={handleToggleBurger}></div>
 
@@ -61,7 +60,7 @@ export default function MobileNavBar () {
                     )}
                 </div>
             </div>
-
+            
         </div>
     )    
     

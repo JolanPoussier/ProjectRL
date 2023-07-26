@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import style from "./page.module.scss";
 import moves from "@/utils/datas/moves";

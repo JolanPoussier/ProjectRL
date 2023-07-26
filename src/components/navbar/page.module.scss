@@ -49,6 +49,7 @@
 
 .mainMobile {
     @extend .main;
+    display: none;
     justify-content: space-between;
     z-index: 2;
     padding: 0 1em;
@@ -133,4 +134,22 @@
 .overlayMobile_active {
     @extend .overlayMobile;
     display: block;
+}
+
+
+///////////////
+/// RESPONSIVE
+//////////////
+
+
+@media screen and (max-width: 1000px) {
+    .main {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 999px) {
+    .mainMobile {
+        display: flex;
+    }
 }

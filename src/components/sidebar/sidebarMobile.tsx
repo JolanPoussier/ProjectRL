@@ -1,6 +1,6 @@
 "use client"
 
-import style from "./page.module.scss";
+import style from "./sidebar.module.scss";
 import Difficulty from "./difficulty/difficulty";
 import Input from "./input/input";
 import Shortcuts from "./shortcuts/shortcuts";

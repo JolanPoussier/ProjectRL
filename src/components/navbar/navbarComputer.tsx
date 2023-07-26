@@ -6,13 +6,11 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import logo from "src/assets/logo/logo.png";
 import categories from '@/utils/datas/categories';
-import { useMediaQuery } from 'react-responsive';
+
 
 export default function NavBarComputer () {
 
     const params = useParams();
-
-    const isSmallScreen = useMediaQuery({ query: '(max-width: 1000px)' });
 
     return (
         <div className={style.main}>
