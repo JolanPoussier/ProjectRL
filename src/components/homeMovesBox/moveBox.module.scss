@@ -1,0 +1,30 @@
+.main {
+    height: 80vh;
+}
+
+.title {
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-top: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.element {
+    width: 45%;
+    height: auto;
+    margin-bottom: 2em;
+}
+
+@media screen and (max-width: 1000px) {
+    .element {
+        width:100%;
+    }
+}
