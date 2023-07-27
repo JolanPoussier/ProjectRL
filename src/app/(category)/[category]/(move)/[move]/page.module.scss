@@ -1,3 +1,10 @@
 .main {
-    margin-left: 500px;
+    margin: 5%;
+    margin-left: calc(500px + 5%);
+}
+
+@media screen and (max-width: 1000px) {
+    .main {
+        margin-left: 5%;
+    }
 }

@@ -1,3 +1,7 @@
+///////////////
+/// COMP Navbar
+///////////////
+
 .main {
     width: 100%;
     height: 5em;
@@ -18,11 +22,13 @@
 }
 
 .element {
+    width: 130px;
     font-size: var(--normal);
-    text-align: center;
     display: flex;
-    align-content: center;
-    align-items: center;
+}
+
+.element:hover {
+    background-color: var(--hover-color);
 }
 
 .link {
@@ -32,6 +38,11 @@
     height: 4em;
     display: flex;
     align-items: center;
+    border-bottom: 4px solid transparent;
+    align-self: center;
+    margin: auto;
+    flex-grow: 4;
+    justify-content: center;
 }
 
 .link_active {
@@ -39,14 +50,124 @@
     border-bottom: 4px solid var(--third-color);
 }
 
+/////////////////
+// MOBILE Navbar
+////////////////
 
-// mobile Navbar
-
-.mobileContainer {
-    display: flex;
+.mainMobile {
+    @extend .main;
+    display: none;
     justify-content: space-between;
+    z-index: 2;
+    padding: 0 1em;
 }
 
-.bm-burger-button {
-    
+//BURGER M
+
+.menuBurger {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: -250px;
+    background: rgba($color: #000000, $alpha: 0.9) ;
+    padding-top: 60px;
+    transition: right 0.5s ease;
+}
+
+.menuBurger_active {
+    @extend .menuBurger;
+    right: 0;
+}
+
+.containerMobile {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+}
+
+.elementMobile {
+    align-self: start;
+    @extend .element;
+    margin-top: 2em;
+}
+
+.linkMobile_active {
+    @extend .link_active;
+    height: 2em;
+}
+
+.linkMobile {
+    @extend .link;
+    height: 2em;
+}
+
+//BUTTONS
+
+.burgerButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.sideBarButton {
+    @extend .burgerButton;
+    padding-left: 5px; 
+}
+
+.closeButton {
+    @extend .burgerButton;
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    font-size: 36px;
+    color: white;
+}
+
+//OVERLAY
+
+.overlayMobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.4) ;
+    display: none;
+}
+
+.overlayMobile_active {
+    @extend .overlayMobile;
+    display: block;
+}
+
+
+///////////////
+/// RESPONSIVE
+//////////////
+
+
+@media screen and (max-width: 1000px) {
+    .main {
+        display: none;
+    }
+    .mainMobile {
+        display: flex;
+    }
+    .element:hover {
+        background-color: transparent;
+    }
+    .linkMobile:active {
+        color: var(--third-color);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .element {
+        width: auto;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
 }
