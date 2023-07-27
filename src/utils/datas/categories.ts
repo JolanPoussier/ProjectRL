@@ -1,9 +1,9 @@
 const categories = [
     'tirs',
-    'aeriennes',
-    'deplacement',
-    'defense',
     'sol',
+    'aeriennes',
+    'defense',
+    'deplacement',
     'kickoffs',
     'freestyle'
 ];

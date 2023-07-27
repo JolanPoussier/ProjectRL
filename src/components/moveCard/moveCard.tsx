@@ -17,7 +17,8 @@ export default function MoveCard ({ title, text, image, id, difficulty, slug }: 
             <div className={style.imageContainer}>
                 <Image className={style.image} alt={`Image du move ${title}`} src={image} width={500} height={500}/>
             </div>
-            <p className={style.text}>{text}</p>
+            {text && <p className={style.text}>{text}</p>
+            }
         </div>
     )
 }
