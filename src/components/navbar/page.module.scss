@@ -22,11 +22,13 @@
 }
 
 .element {
+    width: 130px;
     font-size: var(--normal);
-    text-align: center;
     display: flex;
-    align-content: center;
-    align-items: center;
+}
+
+.element:hover {
+    background-color: var(--hover-color);
 }
 
 .link {
@@ -36,6 +38,11 @@
     height: 4em;
     display: flex;
     align-items: center;
+    border-bottom: 4px solid transparent;
+    align-self: center;
+    margin: auto;
+    flex-grow: 4;
+    justify-content: center;
 }
 
 .link_active {
@@ -146,10 +153,21 @@
     .main {
         display: none;
     }
-}
-
-@media screen and (max-width: 999px) {
     .mainMobile {
         display: flex;
+    }
+    .element:hover {
+        background-color: transparent;
+    }
+    .linkMobile:active {
+        color: var(--third-color);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .element {
+        width: auto;
+        margin-left: 1em;
+        margin-right: 1em;
     }
 }

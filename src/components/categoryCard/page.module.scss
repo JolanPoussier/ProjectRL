@@ -7,6 +7,10 @@
     transition-duration: 0.5s;
 }
 
+.card:hover {
+    background-color: var(--hover-color);
+}
+
 .link {
     color: white;
     text-decoration: none;

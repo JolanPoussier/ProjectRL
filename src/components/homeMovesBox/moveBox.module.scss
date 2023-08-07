@@ -1,8 +1,11 @@
 .main {
     height: 80vh;
+    margin-top: 6em;
 }
 
 .title {
+    font-size: var(--title2);
+    font-weight: var(--semi-bold);
     text-align: center;
 }
 
@@ -18,12 +21,38 @@
 }
 
 .element {
-    width: 45%;
+    width: 32%;
     height: auto;
     margin-bottom: 2em;
 }
 
+.element:hover {
+    opacity: 0.8;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+@media screen and (max-width: 1400px) {
+    .element {
+        width: 48%;
+    }
+    .element:nth-last-child(-n+2) {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1000px) {
+    .element {
+        width:80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
     .element {
         width:100%;
     }
