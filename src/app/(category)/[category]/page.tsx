@@ -11,7 +11,8 @@ export default function Page({ params }: { params: { category: string } }) {
 
     let movesToShow = [];
     movesToShow = Moves.filter(move => (move.category === params.category) && (checkboxState[move.difficulty] === true))
-
+    console.log("test");
+    
     return (
       <div className={styles.main}>
         <div className={styles.cardsContainer}>
