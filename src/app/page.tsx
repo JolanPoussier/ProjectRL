@@ -1,8 +1,6 @@
 import Input from "@/components/sidebar/input/input";
 import style from "./page.module.scss";
 import MoveBox from "@/components/homeMovesBox/moveBox";
-import cat from "@/app/api/findMany/category/categoryTest.ts";
-
 
 // `app/page.tsx` is the UI for the `/` URL
 
