@@ -12,4 +12,21 @@ model Category {
   name      String    @db.VarChar(255)
   createdAt DateTime  @default(now()) @db.Timestamp(6)
   updatedAt DateTime? @db.Timestamp(6)
+  Move      Move[]
+}
+
+model Move {
+  id          Int       @id @default(autoincrement())
+  title       String    @db.VarChar(255)
+  difficulty  Int
+  slug        String    @db.VarChar(100)
+  summary     String    @db.VarChar(255)
+  description String
+  views       Int?
+  thumbnail   String    @db.VarChar(255)
+  video       String    @db.VarChar(255)
+  createdAt   DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime? @db.Timestamp(6)
+  categoryId  Int
+  Category    Category  @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
