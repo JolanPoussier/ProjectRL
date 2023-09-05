@@ -5,10 +5,8 @@ import style from './page.module.scss';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import logo from "src/assets/logo/logo.png";
-import categories from '@/utils/datas/categories';
 
-
-export default function NavBarComputer () {
+export default function NavBarComputer({categories}: {categories: Array<any>}) {
 
     const params = useParams();
 
@@ -22,9 +20,9 @@ export default function NavBarComputer () {
             <div className={style.container}>
                 {categories.map((category) => 
                     (
-                        <div key={category} className={style.element}>
-                            <Link key={category} className={`${params.category===category ? style.link_active : style.link}`} href={`/${category}`}>
-                                {category}
+                        <div key={category.id} className={style.element}>
+                            <Link key={category.id} className={`${params.category===category.name ? style.link_active : style.link}`} href={`/${category.name}`}>
+                                {category.name}
                             </Link>
                         </div>
                     )
