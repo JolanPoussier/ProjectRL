@@ -17,7 +17,8 @@ export default function NavBar () {
 
     useEffect(() => {
         findAllCategories().then((data) => {
-            setCategories(data.datas)
+            setCategories(data.data)
+            console.log(data)
         });
       }, [])
 

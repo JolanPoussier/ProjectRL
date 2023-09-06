@@ -12,7 +12,7 @@ model Category {
   name      String    @db.VarChar(255)
   createdAt DateTime  @default(now()) @db.Timestamp(6)
   updatedAt DateTime? @db.Timestamp(6)
-  Move      Move[]
+  moves     Move[]
 }
 
 model Move {
@@ -28,5 +28,5 @@ model Move {
   createdAt   DateTime  @default(now()) @db.Timestamp(6)
   updatedAt   DateTime? @db.Timestamp(6)
   categoryId  Int
-  Category    Category  @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
