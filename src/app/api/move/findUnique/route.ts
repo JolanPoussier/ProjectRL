@@ -3,12 +3,12 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function GET({name}: {name: string}) {
+export async function GET() {
   try {
     const uniqueMove = await prisma.move.findFirst({
-      where: {
-        title: name
-      }
+      // where: {
+      //   title: name
+      // }
     });
 
     if (uniqueMove) {
