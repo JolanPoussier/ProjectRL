@@ -3,14 +3,14 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function GET({category}: {category: string}) {
+export async function GET(){
   try {
     const categoryMoves = await prisma.move.findMany({
-      where: {
-        category: {
-          name: category,
-        },      
-      }
+      // where: {
+      //   category: {
+      //     name: request.query,
+      //   },      
+      // }
     });
 
     if (categoryMoves) {
