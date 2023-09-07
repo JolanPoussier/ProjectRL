@@ -1,0 +1,27 @@
+import minimalizeText from "@/utils/functions/minimalizeText";
+import style from "./searchBar.module.scss";
+import moves from "@/utils/datas/moves";
+import Link from "next/link";
+
+export default function SuggestionSide ({inputValue, resetInput, displayFunc}: {inputValue: string, resetInput: Function, displayFunc?: Function}) {
+
+    let movesToShow = [];
+    movesToShow = moves.filter(move => ((move.category.includes(minimalizeText(inputValue))) || (minimalizeText(move.title).includes(minimalizeText(inputValue)))))
+
+    function handleClick () {
+        resetInput("")
+        displayFunc ? displayFunc() : "";
+    }
+
+    return (
+        <div className={style.suggestionSide}>
+            <ul className={style.suggestionList}>
+                {movesToShow.map(move => (
+                    <Link key={move.id} onClick={handleClick} href={`/${move.category}/${move.slug}`}>
+                        <li className={style.suggestionItems}>{move.title}</li>
+                    </Link>
+                ))}
+            </ul>
+        </div>
+    )
+}

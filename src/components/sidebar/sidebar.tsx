@@ -2,7 +2,7 @@
 
 import style from "./sidebar.module.scss";
 import Difficulty from "./difficulty/difficulty";
-import Input from "./input/input";
+import SearchBar from "./searchBar/searchBar";
 import Shortcuts from "./shortcuts/shortcuts";
 
 export default function Sidebar () {
@@ -10,7 +10,7 @@ export default function Sidebar () {
 
     return (
             <div className={style.main}>
-                <Input />
+                <SearchBar />
                 <Difficulty />
                 <Shortcuts />
             </div>

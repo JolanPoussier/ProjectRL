@@ -2,7 +2,7 @@
 
 import style from "./sidebar.module.scss";
 import Difficulty from "./difficulty/difficulty";
-import Input from "./input/input";
+import SearchBar from "./searchBar/searchBar";
 import Shortcuts from "./shortcuts/shortcuts";
 
 export default function SidebarMobile ({ displaySideMenu, displayFunc }: {displaySideMenu: boolean, displayFunc: Function}) {
@@ -14,7 +14,9 @@ export default function SidebarMobile ({ displaySideMenu, displayFunc }: {displa
     return (
         <div className={ displaySideMenu ? style.mainMobile_active : style.mainMobile }>
             <button className={style.closeButton} onClick={handleToggleSide}>x</button>
-            <Input />
+            <div className={style.searchBar}>
+                <SearchBar displayFunc={displayFunc}/>
+            </div>
             <Difficulty />
             <Shortcuts displayFunc={displayFunc} />
         </div>

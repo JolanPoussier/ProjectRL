@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+.inputDivBorder {
+    @extend .inputDiv;
+    border-radius: 10px 10px 0 0;
+}
 
 .input {
     width: 90%;
@@ -34,4 +38,23 @@
 
 .searchIcon:hover{
     cursor: pointer;
+}
+
+/////////////////////
+/// SuggestionSide
+////////////////////
+
+.suggestionSide {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+.suggestionList {
+    list-style-type: none;
+}
+
+.suggestionItems {
+    color: black;
 }

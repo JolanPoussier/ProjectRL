@@ -1,12 +1,13 @@
 "use client"
 
 import { useState } from "react";
-import style from "./input.module.scss";
+import style from "./searchBar.module.scss";
 import searchIcon from "@/assets/icons/searchIcon.png";
 import Image from "next/image";
 import { useRouter } from 'next/navigation'
+import SuggestionSide from "./suggestionSide";
 
-export default function Input () {
+export default function SearchBar ({displayFunc}: {displayFunc?: Function}) {
 
     const [inputValue, setInputValue] = useState<any>("");
     const router = useRouter();
@@ -22,7 +23,7 @@ export default function Input () {
     return (
         <div className={style.inputContainer}>
             <form onSubmit={handleSubmit}>
-                <div className={style.inputDiv}>
+                <div className={inputValue ? style.inputDivBorder : style.inputDiv}>
                     <input 
                         className={style.input}
                         placeholder="Trouves ta méchanique" 
@@ -35,6 +36,7 @@ export default function Input () {
                     </button>
                 </div>
             </form>
+            {inputValue && <SuggestionSide inputValue={inputValue} resetInput={setInputValue} displayFunc={displayFunc}/>}
         </div>
     )
 }
