@@ -15,7 +15,7 @@ export default function SearchBar ({displayFunc}: {displayFunc?: Function}) {
 
     const handleInputChange = (e: any) => {
         setInputValue(e.target.value);
-        (e.target.value === "") ? setOverlay(false) : "";
+        (e.target.value === "") ? setOverlay(false) : setOverlay(true);
     }
     const handleSubmit = (e: any) => {
         e.preventDefault();
