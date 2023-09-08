@@ -9,7 +9,6 @@ export default function categoryLayout({
     return (
 
       <section className={style.layout}>
-        {/* Include shared UI here e.g. a header or sidebar */}
         <Sidebar />
         <div className={style.layoutContent}>
           {children}
