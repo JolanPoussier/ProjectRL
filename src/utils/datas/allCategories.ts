@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function findAllCategories () {
+export default function useCategories () {
 
 const [categories, setCategories] = useState([]);
 

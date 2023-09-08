@@ -2,13 +2,13 @@
 
 import NavBarComputer from './navbarComputer';
 import MobileNavBar from './mobileNavbar';
-import findAllCategories from '@/utils/datas/allCategories';
+import useCategories from '@/utils/datas/allCategories';
 import { Category } from '@/utils/datas/datasType';
 
 
 export default function NavBar () {
 
-    let categories: Category[] = findAllCategories() || [];
+    let categories: Category[] = useCategories() || [];
 
     return (
         <>

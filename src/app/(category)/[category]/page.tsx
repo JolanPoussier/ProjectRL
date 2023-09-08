@@ -4,7 +4,7 @@ import { useCheckboxContext } from "@/contexts/CheckboxContext.tsx";
 import Moves from "../../../utils/datas/moves.ts";
 import styles from "./page.module.scss";
 import CategoryCard from "@/components/categoryCard/categoryCard";
-import findAllCategories from "@/utils/datas/allCategories.ts";
+import useCategories from "@/utils/datas/allCategories.ts";
 import { Category } from "@/utils/datas/datasType.ts";
 import minimalizeText from "@/utils/functions/minimalizeText.ts";
 
@@ -13,7 +13,7 @@ export default function Page({ params }: { params: { category: string } }) {
   const { checkboxState } = useCheckboxContext();
 
     let movesToShow: any = [];
-    let categories: Category[] = findAllCategories() || [];
+    let categories: Category[] = useCategories() || [];
 
     if(categories){
       if(categories.some(category => ((category.name === params.category)))){
