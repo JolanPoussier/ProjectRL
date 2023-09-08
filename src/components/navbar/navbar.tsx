@@ -2,26 +2,13 @@
 
 import NavBarComputer from './navbarComputer';
 import MobileNavBar from './mobileNavbar';
-import { useEffect, useState } from 'react';
-import findAllCategories from '@/utils/datas/allCategories';
+import useCategories from '@/utils/datas/allCategories';
+import { Category } from '@/utils/datas/datasType';
+
 
 export default function NavBar () {
 
-
-    interface Category {
-        id: number;
-        name: string;
-      }
-
-    const [categories, setCategories] = useState<Category[]>([]);
-
-    useEffect(() => {
-        findAllCategories().then((data) => {
-            setCategories(data.data)
-            console.log(data)
-        });
-      }, [])
-
+    let categories: Category[] = useCategories() || [];
 
     return (
         <>

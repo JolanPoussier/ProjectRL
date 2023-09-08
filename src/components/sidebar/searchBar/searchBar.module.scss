@@ -1,0 +1,92 @@
+.inputContainer {
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 4;
+}
+
+.inputDiv {
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.inputDivBorder {
+    @extend .inputDiv;
+    border-radius: 10px 10px 0 0;
+}
+
+.input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    margin-left: 9px;
+    font-size: 17px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.searchIcon {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+
+.searchIcon:hover{
+    cursor: pointer;
+}
+
+/////////////////////
+/// SuggestionSide
+////////////////////
+
+.suggestionSide {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    z-index: 4;
+    box-shadow: 0 4px 6px 0 #171717;
+}
+
+.suggestionList {
+    list-style-type: none;
+}
+
+.suggestionLinks {
+    text-decoration: none;
+
+    color: black;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: var(--normal);
+    padding-left: 9px;
+}
+
+.suggestionLinks:hover {
+    background-color: beige;
+    border-radius: 0 0 10px 10px;
+}
+
+.overlaySearchBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+.overlaySearchBar_active {
+    @extend .overlaySearchBar;
+    display: block;
+}

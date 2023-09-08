@@ -1,4 +1,4 @@
-import Input from "@/components/sidebar/input/input";
+import SearchBar from "@/components/sidebar/searchBar/searchBar";
 import style from "./page.module.scss";
 import MoveBox from "@/components/homeMovesBox/moveBox";
 
@@ -9,7 +9,7 @@ export default function Page() {
         <div className={style.main}>
             <h1 className={style.title}>Trouve ta mécanique</h1>
             <div className={style.input}>
-                <Input />
+                <SearchBar />
             </div>
             <MoveBox />
         </div>        

@@ -1,11 +1,10 @@
 .main {
-    width: 450px;
+    width: 400px;
     height: 85%;
     position: fixed;
     z-index: 1;
     top: 8em;
     left: 2em;
-    padding-right: 4em;
 }
 
 //////////////
@@ -40,6 +39,10 @@
     right: 25px;
     font-size: 36px;
     color: white;
+}
+
+.searchBar {
+    position: relative;
 }
 
 ///////////////
