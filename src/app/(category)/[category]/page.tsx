@@ -39,7 +39,7 @@ export default function Page({ params }: { params: { category: string } }) {
     <div className={styles.main}>
       <div className={styles.cardsContainer}>
         {movesToShow.map((move: any) => (
-          <CategoryCard {...move} key={move.slug} />
+          <CategoryCard {...move} key={move.slug} category={params.category} />
         ))}
       </div>
     </div>

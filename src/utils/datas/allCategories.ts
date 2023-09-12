@@ -1,24 +1,23 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-export default function useCategories () {
+export default function useCategories() {
+  const [categories, setCategories] = useState([])
 
-const [categories, setCategories] = useState([]);
-
-useEffect(() => {
-    fetchCategories().then((data) => {
-        setCategories(data.data)
-    });
+  useEffect(() => {
+    fetchCategories().then(data => {
+      setCategories(data.data)
+    })
   }, [])
 
-if(categories) {
+  if (categories) {
     return categories
-}
+  }
 }
 
-async function fetchCategories() {
-    const categories = await fetch('/api/category')
-    const finalDatas = await categories.json();
-    return finalDatas;
-};
+export async function fetchCategories() {
+  const categories = await fetch('/api/category')
+  const finalDatas = await categories.json()
+  return finalDatas
+}
