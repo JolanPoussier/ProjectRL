@@ -1,8 +1,7 @@
 'use client'
 
-import Image, { StaticImageData } from 'next/image'
-import style from './page.module.scss'
-import starGenerator from '@/utils/functions/starGenerator'
+import style from './moveCard.module.scss'
+import starGenerator from '@/utils/starGenerator'
 
 export default function MoveCard({
   id,

@@ -1,0 +1,36 @@
+'use client'
+
+import style from './difficulty.module.scss'
+import starGenerator from '@/utils/starGenerator'
+import Checkbox from '@/ui/checkbox/checkbox'
+import { useCheckboxContext } from '@/contexts/CheckboxContext'
+
+export default function DifficultyRow({
+  star,
+  difficulty,
+  ranks,
+  id,
+}: {
+  star: number
+  difficulty: string
+  ranks: string
+  id: number
+}) {
+  const { checkboxState, setCheckboxState } = useCheckboxContext()
+
+  return (
+    <div className={style.difficultyRow}>
+      <Checkbox
+        classMain={style.checkbox}
+        classInput={style.checkboxInput}
+        checked={checkboxState[id]}
+        id={id}
+        changeFunction={() => setCheckboxState({ ...checkboxState, [id]: !checkboxState[id] })}
+      />
+      <div className={style.starContainer}>{starGenerator({ star })}</div>
+      <div className={style.rankContainer}>
+        {difficulty}({ranks})
+      </div>
+    </div>
+  )
+}

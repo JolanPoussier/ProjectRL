@@ -1,6 +1,6 @@
 import NavBarComputer from './navbarComputer'
 import MobileNavBar from './mobileNavbar'
-import { fetchCategories } from '@/utils/datas/categories/categoriesServerSide'
+import { fetchCategories } from '@/services/categories/categoriesServerSide'
 import { Category } from '@prisma/client'
 
 export default async function NavBar() {

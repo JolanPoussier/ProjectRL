@@ -1,6 +1,6 @@
 import MoveCard from '@/components/moveCard/moveCard'
 import style from './page.module.scss'
-import { fetchUniqueMove } from '@/utils/datas/moves/uniqueMove'
+import { fetchUniqueMove } from '@/services/moves/singleMove'
 import { Move } from '@prisma/client'
 
 export default async function Page({ params }: { params: { category: string; move: string } }) {

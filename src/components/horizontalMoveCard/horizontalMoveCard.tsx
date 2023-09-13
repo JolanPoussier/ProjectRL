@@ -1,11 +1,11 @@
 'use client'
 
 import Image, { StaticImageData } from 'next/image'
-import style from './page.module.scss'
-import starGenerator from '@/utils/functions/starGenerator'
+import style from './horizontalMoveCard.module.scss'
+import starGenerator from '@/utils/starGenerator'
 import Link from 'next/link'
 
-export default function CategoryCard({
+export default function HorizontalMoveCard({
   title,
   category,
   summary,

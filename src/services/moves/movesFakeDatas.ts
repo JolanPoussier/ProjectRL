@@ -1,4 +1,4 @@
-import image from '@/assets/img/thumbnails/powershot.jpeg'
+import image from '@/../public/img/thumbnails/powershot.jpeg'
 import { StaticImageData } from 'next/image'
 
 type move = {

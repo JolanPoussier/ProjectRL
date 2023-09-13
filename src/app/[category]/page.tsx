@@ -1,12 +1,12 @@
 'use client'
 
 import { useCheckboxContext } from '@/contexts/CheckboxContext.tsx'
-import Moves from '../../../utils/datas/moves.ts'
+import Moves from '../../services/moves/movesFakeDatas.ts'
 import styles from './page.module.scss'
-import CategoryCard from '@/components/categoryCard/categoryCard'
-import useCategories from '@/utils/datas/categories/allCategories.ts'
-import minimalizeText from '@/utils/functions/minimalizeText.ts'
-import useMoveByCategory from '@/utils/datas/moves/movesByCategory.ts'
+import CategoryCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
+import useCategories from '@/services/categories/allCategories.ts'
+import minimalizeText from '@/utils/minimalizeText.ts'
+import useMoveByCategory from '@/services/moves/movesSortByCategory.ts'
 import { Move, Category } from '@prisma/client'
 
 export default function Page({ params }: { params: { category: string } }) {
