@@ -5,19 +5,21 @@ import style from './page.module.scss'
 import starGenerator from '@/utils/functions/starGenerator'
 
 export default function MoveCard({
-  title,
-  description,
-  image,
   id,
+  title,
   difficulty,
   slug,
+  description,
+  video,
+  categoryId,
 }: {
-  title: string
-  description: string
-  image: StaticImageData
   id: number
+  title: string
   difficulty: number
   slug: string
+  description: string
+  video: string
+  categoryId: number
 }) {
   const star = difficulty
 
@@ -28,7 +30,14 @@ export default function MoveCard({
         <div className={style.stars}>{starGenerator({ star })}</div>
       </div>
       <div className={style.imageContainer}>
-        <Image className={style.image} alt={`Image du move ${title}`} src={image} width={500} height={500} />
+        <iframe
+          className={style.iframeYT}
+          src={video}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Embedded youtube"
+        />
       </div>
       {description && <p className={style.text}>{description}</p>}
     </div>

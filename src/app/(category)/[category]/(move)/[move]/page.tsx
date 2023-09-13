@@ -1,16 +1,14 @@
-'use client'
+import MoveCard from '@/components/moveCard/moveCard'
+import style from './page.module.scss'
+import { fetchUniqueMove } from '@/utils/datas/moves/uniqueMove'
+import { Move } from '@prisma/client'
 
-import MoveCard from "@/components/moveCard/moveCard";
-import moves from "@/utils/datas/moves";
-import style from "./page.module.scss";
+export default async function Page({ params }: { params: { category: string; move: string } }) {
+  const move: Move = (await fetchUniqueMove(params.move)) as Move
 
-export default function Page({ params }: { params: { category: string, move: string } }) {
-
-  let moveToDisplay = moves.filter(moveToFilter => moveToFilter.slug === params.move)
-
-    return (
-      <div className={style.main}>
-        <MoveCard {...moveToDisplay[0]}/>
-      </div>
-      )
-  }
+  return (
+    <div className={style.main}>
+      <MoveCard {...move} />
+    </div>
+  )
+}

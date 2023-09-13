@@ -4,9 +4,9 @@ import { useCheckboxContext } from '@/contexts/CheckboxContext.tsx'
 import Moves from '../../../utils/datas/moves.ts'
 import styles from './page.module.scss'
 import CategoryCard from '@/components/categoryCard/categoryCard'
-import useCategories from '@/utils/datas/allCategories.ts'
+import useCategories from '@/utils/datas/categories/allCategories.ts'
 import minimalizeText from '@/utils/functions/minimalizeText.ts'
-import useMoveByCategory from '@/utils/datas/moveByCategory.ts'
+import useMoveByCategory from '@/utils/datas/moves/movesByCategory.ts'
 import { Move, Category } from '@prisma/client'
 
 export default function Page({ params }: { params: { category: string } }) {
