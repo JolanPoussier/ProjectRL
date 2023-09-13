@@ -1,5 +1,3 @@
-'use client'
-
 import style from '@/components/sidebar/searchBar/searchBar.module.scss'
 
 type Props = {

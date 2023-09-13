@@ -2,7 +2,7 @@
 
 import style from './difficulty.module.scss'
 import starGenerator from '@/utils/starGenerator'
-import Checkbox from '@/ui/checkbox/checkbox'
+import Checkbox from '@/UI/checkbox/checkbox'
 import { useCheckboxContext } from '@/contexts/CheckboxContext'
 
 export default function DifficultyRow({

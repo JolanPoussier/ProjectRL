@@ -6,7 +6,7 @@ import searchIcon from '@/assets/icons/searchIcon.png'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import SuggestionSide from './suggestionMenu'
-import InputText from '@/ui/inputText/input'
+import InputText from '@/UI/inputText/input'
 
 export default function SearchBar({ displayModal }: { displayModal?: Function }) {
   const [inputValue, setInputValue] = useState<any>('')
