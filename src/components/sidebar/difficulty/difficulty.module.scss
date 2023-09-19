@@ -13,8 +13,8 @@
     margin-top: 1.5em;
 }
 
-//Section component style
-.section {
+//difficultyRow component style
+.difficultyRow {
     margin-bottom: 0.5em;
     display: flex;
     align-items: center;
@@ -44,11 +44,11 @@
 //RESPONSIVE
 
 @media screen and (max-width: 500px) {
-    .section {
+    .difficultyRow {
         flex-wrap: wrap;
         margin-bottom: 1em;
     }
-    .section div:last-child {
+    .difficultyRow div:last-child {
         width: 100%;
         padding-top: 5px;
     }

@@ -1,19 +1,15 @@
-"use client";
+import NavBarComputer from './navbarComputer'
+import MobileNavBar from './mobileNavbar'
+import { fetchCategories } from '@/services/categories/categoriesServerSide'
+import { Category } from '@prisma/client'
 
-import NavBarComputer from './navbarComputer';
-import MobileNavBar from './mobileNavbar';
-import useCategories from '@/utils/datas/allCategories';
-import { Category } from '@/utils/datas/datasType';
+export default async function NavBar() {
+  let categories: Category[] = (await fetchCategories()) || []
 
-
-export default function NavBar () {
-
-    let categories: Category[] = useCategories() || [];
-
-    return (
-        <>
-            <MobileNavBar categories={categories}/> 
-            <NavBarComputer categories={categories}/> 
-        </>
-    )
+  return (
+    <>
+      <MobileNavBar categories={categories} />
+      <NavBarComputer categories={categories} />
+    </>
+  )
 }

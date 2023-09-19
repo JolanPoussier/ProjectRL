@@ -1,24 +1,30 @@
-"use client"
+'use client'
 
-import Link from "next/link";
-import style from "./page.module.scss";
-import moves from "@/utils/datas/moves";
+import Link from 'next/link'
+import style from './shortcuts.module.scss'
+import moves from '@/services/moves/movesFakeDatas'
 
-export default function Shortcuts ({displayFunc}: {displayFunc?: Function}) {
+export default function Shortcuts({ displayModal }: { displayModal?: Function }) {
+  const handleClick = () => {
+    if (displayModal) {
+      displayModal()
+    }
+  }
 
-    const handleClick = () => {
-        if(displayFunc){
-            displayFunc();
-        }
-    }  
-
-    return (
-        <div className={style.main}>
-            <div className={style.container}>
-                {moves.map((move) => (
-                    <Link onClick={ displayFunc ? handleClick : undefined} key={move.id} href={`/${move.category}/${move.slug}`} className={style.move}>{move.title}</Link>
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div className={style.main}>
+      <div className={style.container}>
+        {moves.map(move => (
+          <Link
+            onClick={displayModal ? handleClick : undefined}
+            key={move.id}
+            href={`/${move.category}/${move.slug}`}
+            className={style.move}
+          >
+            {move.title}
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
 }

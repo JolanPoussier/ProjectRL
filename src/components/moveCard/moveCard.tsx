@@ -1,24 +1,44 @@
-"use client"
+'use client'
 
-import Image, { StaticImageData } from "next/image";
-import style from "./page.module.scss";
-import starGenerator from "@/utils/functions/starGenerator";
+import style from './moveCard.module.scss'
+import starGenerator from '@/utils/starGenerator'
 
+export default function MoveCard({
+  id,
+  title,
+  difficulty,
+  slug,
+  description,
+  video,
+  categoryId,
+}: {
+  id: number
+  title: string
+  difficulty: number
+  slug: string
+  description: string
+  video: string
+  categoryId: number
+}) {
+  const star = difficulty
 
-export default function MoveCard ({ title, text, image, id, difficulty, slug }: { title: string, text: string, image: StaticImageData, id: number, difficulty: number, slug: string}) {
-    const star = difficulty;
-    
-    return (
-        <div className={style.card}>
-            <div className={style.header}>
-                <h3 className={style.title}>{title}</h3>
-                <div className={style.stars}>{starGenerator({star})}</div>
-            </div>
-            <div className={style.imageContainer}>
-                <Image className={style.image} alt={`Image du move ${title}`} src={image} width={500} height={500}/>
-            </div>
-            {text && <p className={style.text}>{text}</p>
-            }
-        </div>
-    )
+  return (
+    <div className={style.card}>
+      <div className={style.header}>
+        <h3 className={style.title}>{title}</h3>
+        <div className={style.stars}>{starGenerator({ star })}</div>
+      </div>
+      <div className={style.imageContainer}>
+        <iframe
+          className={style.iframeYT}
+          src={video}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Embedded youtube"
+        />
+      </div>
+      {description && <p className={style.text}>{description}</p>}
+    </div>
+  )
 }
