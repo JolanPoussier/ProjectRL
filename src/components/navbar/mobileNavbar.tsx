@@ -5,7 +5,7 @@ import style from './page.module.scss'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import logo from 'src/assets/logo/logoMobile.png'
-import burger from '@/assets/logo/menu.png'
+import burger from '@/assets/icons/menu.png'
 import { useState } from 'react'
 
 export default function MobileNavBar({ categories }: { categories: Array<any> }) {

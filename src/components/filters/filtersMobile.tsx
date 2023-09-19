@@ -3,7 +3,7 @@
 import style from './filters.module.scss'
 import Difficulty from './difficulty/difficulty'
 import SearchBar from './searchBar/searchBar'
-import filtersArrow from '@/assets/logo/filtersMobile.png'
+import filtersArrow from '@/assets/icons/filtersMobile.png'
 import { useState } from 'react'
 import Image from 'next/image'
 
