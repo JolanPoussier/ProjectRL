@@ -1,14 +1,10 @@
 import MoveCard from '../moveCard/moveCard'
-import moves from '@/services/moves/movesFakeDatas'
 import style from './mostViewedMoves.module.scss'
 import Link from 'next/link'
 import { fetchMostViewedMoves } from '@/services/moves/singleMove'
-import { Move } from '@prisma/client'
 
 export default async function MostViewedMoves() {
   const moves = await fetchMostViewedMoves()
-  console.log(moves)
-  console.log('test')
 
   return (
     <div className={style.main}>

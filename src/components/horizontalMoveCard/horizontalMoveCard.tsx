@@ -1,6 +1,6 @@
 'use client'
 
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import style from './horizontalMoveCard.module.scss'
 import starGenerator from '@/utils/starGenerator'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ export default function HorizontalMoveCard({
   slug,
 }: {
   title: string
-  category: string
+  category: { name: string }
   summary: string
   thumbnail: string
   id: number
@@ -26,7 +26,7 @@ export default function HorizontalMoveCard({
 
   return (
     <div className={style.card}>
-      <Link className={style.link} href={`/${category}/${slug}`}>
+      <Link className={style.link} href={`/${category.name}/${slug}`}>
         <div className={style.imageContainer}>
           <Image
             className={style.image}
