@@ -1,4 +1,4 @@
-import style from '@/components/sidebar/searchBar/searchBar.module.scss'
+import style from '@/components/filters/searchBar/searchBar.module.scss'
 
 type Props = {
   placeholder?: string

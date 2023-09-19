@@ -62,6 +62,10 @@
     padding: 0 1em;
 }
 
+.arrowFiltersFilling {
+    width: 50px;
+}
+
 //BURGER M
 
 .menuBurger {
@@ -109,11 +113,6 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-}
-
-.sideBarButton {
-    @extend .burgerButton;
-    padding-left: 5px; 
 }
 
 .closeButton {

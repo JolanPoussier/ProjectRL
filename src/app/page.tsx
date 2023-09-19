@@ -1,4 +1,4 @@
-import SearchBar from '@/components/sidebar/searchBar/searchBar'
+import SearchBar from '@/components/filters/searchBar/searchBar'
 import style from './page.module.scss'
 import MostViewedMoves from '@/components/mostViewedMoves/mostViewedMoves'
 
