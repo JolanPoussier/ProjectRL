@@ -1,7 +1,6 @@
 'use client'
 
 import { useCheckboxContext } from '@/contexts/CheckboxContext.tsx'
-import Moves from '../../services/moves/movesFakeDatas.ts'
 import styles from './page.module.scss'
 import CategoryCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
 import useCategories from '@/services/categories/allCategories.ts'
@@ -12,9 +11,9 @@ import { Move, Category } from '@prisma/client'
 export default function Page({ params }: { params: { category: string } }) {
   const { checkboxState } = useCheckboxContext()
 
-  let movesToShow: any = []
-  let categories: Category[] = useCategories() || []
-  let moves: Move[] = useMoveByCategory(params) || []
+  let movesToShow: Move[] = []
+  const categories: Category[] = useCategories() || []
+  const moves = useMoveByCategory(params) || []
 
   console.log(moves)
   console.log(categories)
@@ -26,11 +25,11 @@ export default function Page({ params }: { params: { category: string } }) {
         move => move.categoryId === currentCategory.id && checkboxState[move.difficulty] === true,
       )
     } else {
-      movesToShow = Moves.filter(
+      // recherche du paramètre passé à l'URL par la searchBar dans le tableau de tous les objets, à transformer en requète API directment
+      movesToShow = moves.filter(
         move =>
-          move.category.includes(minimalizeText(params.category)) ||
-          (minimalizeText(move.title).includes(minimalizeText(params.category)) &&
-            checkboxState[move.difficulty] === true),
+          minimalizeText(move.title).includes(minimalizeText(params.category)) &&
+          checkboxState[move.difficulty] == true,
       )
     }
   }
@@ -38,7 +37,7 @@ export default function Page({ params }: { params: { category: string } }) {
   return (
     <div className={styles.main}>
       <div className={styles.cardsContainer}>
-        {movesToShow.map((move: any) => (
+        {movesToShow.map(move => (
           <CategoryCard {...move} key={move.slug} category={params.category} />
         ))}
       </div>
