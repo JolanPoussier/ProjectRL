@@ -7,7 +7,13 @@ import filtersArrow from '@/assets/icons/filtersMobile.png'
 import { useState } from 'react'
 import Image from 'next/image'
 
-export default function FiltersMobile() {
+export default function FiltersMobile({
+  difficultyState,
+  setDifficulty,
+}: {
+  difficultyState: Record<number, boolean>
+  setDifficulty: React.Dispatch<React.SetStateAction<Record<number, boolean>>>
+}) {
   const [displayFiltersMenu, setdisplayFiltersMenu] = useState(false)
 
   function handleDisplayFiltersMenu() {
@@ -26,7 +32,7 @@ export default function FiltersMobile() {
         <div className={style.searchBar}>
           <SearchBar displayModal={() => setdisplayFiltersMenu(!displayFiltersMenu)} />
         </div>
-        <Difficulty />
+        <Difficulty difficultyState={difficultyState} setDifficulty={setDifficulty} />
       </div>
     </>
   )

@@ -15,7 +15,7 @@ export default function HorizontalMoveCard({
   slug,
 }: {
   title: string
-  category: { name: string }
+  category: string
   summary: string
   thumbnail: string
   id: number
@@ -26,7 +26,7 @@ export default function HorizontalMoveCard({
 
   return (
     <div className={style.card}>
-      <Link className={style.link} href={`/${category.name}/${slug}`}>
+      <Link className={style.link} href={`/${category}/${slug}`}>
         <div className={style.imageContainer}>
           <Image
             className={style.image}

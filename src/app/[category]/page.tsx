@@ -1,27 +1,32 @@
 'use client'
 
-import { useCheckboxContext } from '@/contexts/CheckboxContext.tsx'
 import styles from './page.module.scss'
-import CategoryCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
+import HorizontalMoveCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
 import useCategories from '@/services/categories/allCategories.ts'
 import minimalizeText from '@/utils/minimalizeText.ts'
 import useMoveByCategory from '@/services/moves/movesSortByCategory.ts'
 import { Move, Category } from '@prisma/client'
 import Filters from '@/components/filters/filters'
 import FiltersMobile from '@/components/filters/filtersMobile'
+import { useState } from 'react'
 
 export default function Page({ params }: { params: { category: string } }) {
-  const { checkboxState } = useCheckboxContext()
+  type CheckboxState = Record<number, boolean>
 
   let movesToShow: Move[] = []
-  const categories: Category[] = useCategories() || []
-  const moves = useMoveByCategory(params) || []
+  const categories: Category[] = useCategories()
+  const moves = useMoveByCategory(params)
+  const [difficultyCheckbox, setDifficultyCheckBox] = useState<CheckboxState>({
+    1: true,
+    2: true,
+    3: true,
+  })
 
   if (categories) {
     if (categories.some(category => category.name === params.category)) {
       const currentCategory = categories.find(category => category.name === params.category)
       movesToShow = moves.filter(
-        move => move.categoryId === currentCategory.id && checkboxState[move.difficulty] === true,
+        move => move.categoryId === currentCategory.id && difficultyCheckbox[move.difficulty] === true,
       )
     } else {
       // TODO
@@ -29,18 +34,18 @@ export default function Page({ params }: { params: { category: string } }) {
       movesToShow = moves.filter(
         move =>
           minimalizeText(move.title).includes(minimalizeText(params.category)) &&
-          checkboxState[move.difficulty] == true,
+          difficultyCheckbox[move.difficulty] == true,
       )
     }
   }
 
   return (
     <div className={styles.main}>
-      <Filters />
-      <FiltersMobile />
+      <Filters difficultyState={difficultyCheckbox} setDifficulty={setDifficultyCheckBox} />
+      <FiltersMobile difficultyState={difficultyCheckbox} setDifficulty={setDifficultyCheckBox} />
       <div className={styles.cardsContainer}>
         {movesToShow.map(move => (
-          <CategoryCard {...move} key={move.slug} category={params.category} />
+          <HorizontalMoveCard {...move} key={move.slug} category={params.category} />
         ))}
       </div>
     </div>

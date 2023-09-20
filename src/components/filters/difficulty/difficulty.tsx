@@ -2,38 +2,30 @@
 
 import style from './difficulty.module.scss'
 import DifficultyRow from './difficultyRow'
+import { difficultyDatas } from '@/services/difficultyDatas'
 
-type Level = {
-  star: number
-  difficulty: string
-  ranks: string
-}
+export default function Difficulty({
+  difficultyState,
+  setDifficulty,
+}: {
+  difficultyState: Record<number, boolean>
+  setDifficulty: React.Dispatch<React.SetStateAction<Record<number, boolean>>>
+}) {
+  // console.log(difficultyState)
+  console.log('test')
 
-const difficulty: Level[] = [
-  {
-    star: 1,
-    difficulty: 'Facile ',
-    ranks: ' <= Diamond ',
-  },
-  {
-    star: 2,
-    difficulty: 'Normal ',
-    ranks: ' < GC ',
-  },
-  {
-    star: 3,
-    difficulty: 'Difficile ',
-    ranks: ' > GC ',
-  },
-]
-
-export default function Difficulty() {
   return (
     <div className={style.main}>
       <h3 className={style.mainTitle}>Difficulté</h3>
       <div className={style.container}>
-        {difficulty.map(level => (
-          <DifficultyRow key={level.ranks} {...level} id={level.star} />
+        {difficultyDatas.map(level => (
+          <DifficultyRow
+            key={level.ranks}
+            {...level}
+            id={level.star}
+            difficultyState={difficultyState}
+            setDifficulty={setDifficulty}
+          />
         ))}
       </div>
     </div>
