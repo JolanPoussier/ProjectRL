@@ -4,12 +4,12 @@ import moves from '@/services/moves/movesFakeDatas'
 import Link from 'next/link'
 
 export default function SuggestionSide({
-  inputValue,
+  searchInput,
   resetInput,
   displayModal,
   setOverlay,
 }: {
-  inputValue: string
+  searchInput: string
   resetInput: Function
   displayModal?: Function
   setOverlay: Function
@@ -17,8 +17,8 @@ export default function SuggestionSide({
   let movesToShow = []
   movesToShow = moves.filter(
     move =>
-      move.category.includes(minimalizeText(inputValue)) ||
-      minimalizeText(move.title).includes(minimalizeText(inputValue)),
+      move.category.includes(minimalizeText(searchInput)) ||
+      minimalizeText(move.title).includes(minimalizeText(searchInput)),
   )
 
   function handleClick() {

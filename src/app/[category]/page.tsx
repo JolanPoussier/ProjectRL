@@ -16,6 +16,7 @@ export default function Page({ params }: { params: { category: string } }) {
   let movesToShow: Move[] = []
   const categories: Category[] = useCategories()
   const moves = useMoveByCategory(params)
+  const [searchInput, setSearchInput] = useState<string>('')
   const [difficultyCheckbox, setDifficultyCheckBox] = useState<CheckboxState>({
     1: true,
     2: true,
@@ -41,8 +42,18 @@ export default function Page({ params }: { params: { category: string } }) {
 
   return (
     <div className={styles.main}>
-      <Filters difficultyState={difficultyCheckbox} setDifficulty={setDifficultyCheckBox} />
-      <FiltersMobile difficultyState={difficultyCheckbox} setDifficulty={setDifficultyCheckBox} />
+      <Filters
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        difficultyState={difficultyCheckbox}
+        setDifficulty={setDifficultyCheckBox}
+      />
+      <FiltersMobile
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        difficultyState={difficultyCheckbox}
+        setDifficulty={setDifficultyCheckBox}
+      />
       <div className={styles.cardsContainer}>
         {movesToShow.map(move => (
           <HorizontalMoveCard {...move} key={move.slug} category={params.category} />

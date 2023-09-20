@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import style from './searchBar.module.scss'
 import searchIcon from '@/assets/icons/searchIcon.png'
 import Image from 'next/image'
@@ -8,18 +8,25 @@ import { useRouter } from 'next/navigation'
 import SuggestionSide from './suggestionMenu'
 import InputText from '@/UI/inputText/input'
 
-export default function SearchBar({ displayModal }: { displayModal?: Function }) {
-  const [inputValue, setInputValue] = useState<any>('')
+export default function SearchBar({
+  displayModal,
+  searchInput,
+  setSearchInput,
+}: {
+  displayModal?: () => void
+  searchInput: string
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>
+}) {
   const [overlay, setOverlay] = useState(false)
   const router = useRouter()
 
   const handleInputChange = (inputChange: string) => {
-    setInputValue(inputChange)
+    setSearchInput(inputChange)
     inputChange === '' ? setOverlay(false) : setOverlay(true)
   }
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    router.push(`/${inputValue}`)
+    router.push(`/${searchInput}`)
     displayModal ? displayModal() : ''
   }
 
@@ -31,10 +38,10 @@ export default function SearchBar({ displayModal }: { displayModal?: Function })
       ></div>
       <div className={style.formContainer}>
         <form onSubmit={handleSubmit}>
-          <div className={inputValue && overlay ? style.inputDivBorder : style.inputDiv}>
+          <div className={searchInput && overlay ? style.inputDivBorder : style.inputDiv}>
             <InputText
-              placeholder="Trouves ta méchanique"
-              value={inputValue}
+              placeholder="Trouve ta méchanique"
+              value={searchInput}
               onChange={handleInputChange}
               onClick={() => setOverlay(true)}
             />
@@ -43,10 +50,10 @@ export default function SearchBar({ displayModal }: { displayModal?: Function })
             </button>
           </div>
         </form>
-        {inputValue && overlay && (
+        {searchInput && overlay && (
           <SuggestionSide
-            inputValue={inputValue}
-            resetInput={setInputValue}
+            searchInput={searchInput}
+            resetInput={setSearchInput}
             displayModal={displayModal}
             setOverlay={setOverlay}
           />

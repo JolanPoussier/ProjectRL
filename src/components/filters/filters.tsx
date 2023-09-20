@@ -7,15 +7,19 @@ import SearchBar from './searchBar/searchBar'
 export default function Filters({
   difficultyState,
   setDifficulty,
+  searchInput,
+  setSearchInput,
 }: {
   difficultyState: Record<number, boolean>
   setDifficulty: React.Dispatch<React.SetStateAction<Record<number, boolean>>>
+  searchInput: string
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>
 }) {
   console.log(difficultyState)
 
   return (
     <div className={style.main}>
-      <SearchBar />
+      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
       <Difficulty difficultyState={difficultyState} setDifficulty={setDifficulty} />
     </div>
   )
