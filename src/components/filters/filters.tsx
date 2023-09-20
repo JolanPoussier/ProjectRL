@@ -15,8 +15,6 @@ export default function Filters({
   searchInput: string
   setSearchInput: React.Dispatch<React.SetStateAction<string>>
 }) {
-  console.log(difficultyState)
-
   return (
     <div className={style.main}>
       <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />

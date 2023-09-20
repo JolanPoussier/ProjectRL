@@ -11,9 +11,6 @@ export default function Difficulty({
   difficultyState: Record<number, boolean>
   setDifficulty: React.Dispatch<React.SetStateAction<Record<number, boolean>>>
 }) {
-  // console.log(difficultyState)
-  console.log('test')
-
   return (
     <div className={style.main}>
       <h3 className={style.mainTitle}>Difficulté</h3>

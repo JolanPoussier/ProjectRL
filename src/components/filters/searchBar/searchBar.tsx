@@ -18,7 +18,7 @@ export default function SearchBar({
   setSearchInput: React.Dispatch<React.SetStateAction<string>>
 }) {
   const [overlay, setOverlay] = useState(false)
-  const router = useRouter()
+  // const router = useRouter()
 
   const handleInputChange = (inputChange: string) => {
     setSearchInput(inputChange)
@@ -26,7 +26,8 @@ export default function SearchBar({
   }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    router.push(`/${searchInput}`)
+    setOverlay(false)
+    // router.push(`/${searchInput}`)
     displayModal ? displayModal() : ''
   }
 

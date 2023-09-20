@@ -10,9 +10,13 @@ import Image from 'next/image'
 export default function FiltersMobile({
   difficultyState,
   setDifficulty,
+  searchInput,
+  setSearchInput,
 }: {
   difficultyState: Record<number, boolean>
   setDifficulty: React.Dispatch<React.SetStateAction<Record<number, boolean>>>
+  searchInput: string
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>
 }) {
   const [displayFiltersMenu, setdisplayFiltersMenu] = useState(false)
 
@@ -30,7 +34,11 @@ export default function FiltersMobile({
           x
         </button>
         <div className={style.searchBar}>
-          <SearchBar displayModal={() => setdisplayFiltersMenu(!displayFiltersMenu)} />
+          <SearchBar
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            displayModal={() => setdisplayFiltersMenu(!displayFiltersMenu)}
+          />
         </div>
         <Difficulty difficultyState={difficultyState} setDifficulty={setDifficulty} />
       </div>

@@ -19,7 +19,6 @@ export default function DifficultyRow({
   difficultyState: Record<number, boolean>
   setDifficulty: React.Dispatch<React.SetStateAction<Record<number, boolean>>>
 }) {
-  // console.log(difficultyState)
   return (
     <div className={style.difficultyRow}>
       <Checkbox

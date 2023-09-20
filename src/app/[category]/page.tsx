@@ -2,10 +2,9 @@
 
 import styles from './page.module.scss'
 import HorizontalMoveCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
-import useCategories from '@/services/categories/allCategories.ts'
 import minimalizeText from '@/utils/minimalizeText.ts'
 import useMoveByCategory from '@/services/moves/movesSortByCategory.ts'
-import { Move, Category } from '@prisma/client'
+import { Move } from '@prisma/client'
 import Filters from '@/components/filters/filters'
 import FiltersMobile from '@/components/filters/filtersMobile'
 import { useState } from 'react'
@@ -14,7 +13,6 @@ export default function Page({ params }: { params: { category: string } }) {
   type CheckboxState = Record<number, boolean>
 
   let movesToShow: Move[] = []
-  const categories: Category[] = useCategories()
   const moves = useMoveByCategory(params)
   const [searchInput, setSearchInput] = useState<string>('')
   const [difficultyCheckbox, setDifficultyCheckBox] = useState<CheckboxState>({
@@ -23,20 +21,15 @@ export default function Page({ params }: { params: { category: string } }) {
     3: true,
   })
 
-  if (categories) {
-    if (categories.some(category => category.name === params.category)) {
-      const currentCategory = categories.find(category => category.name === params.category)
-      movesToShow = moves.filter(
-        move => move.categoryId === currentCategory.id && difficultyCheckbox[move.difficulty] === true,
-      )
-    } else {
-      // TODO
-      // recherche du paramètre passé à l'URL par la searchBar dans le tableau de tous les objets, à transformer en requète API directment
+  if (moves) {
+    if (searchInput) {
       movesToShow = moves.filter(
         move =>
-          minimalizeText(move.title).includes(minimalizeText(params.category)) &&
+          minimalizeText(move.title).includes(minimalizeText(searchInput)) &&
           difficultyCheckbox[move.difficulty] == true,
       )
+    } else {
+      movesToShow = moves.filter(move => difficultyCheckbox[move.difficulty] == true)
     }
   }
 
