@@ -1,5 +1,6 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
 import styles from './page.module.scss'
 import HorizontalMoveCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
 import minimalizeText from '@/utils/minimalizeText.ts'
@@ -8,29 +9,31 @@ import { Move } from '@prisma/client'
 import Filters from '@/components/filters/filters'
 import FiltersMobile from '@/components/filters/filtersMobile'
 import { useState } from 'react'
+import useMovesByInputSearch from '@/services/moves/movesByInputSearch'
 
-export default function Page({ params }: { params: { category: string; also: string } }) {
-  type CheckboxState = Record<number, boolean>
+export default function Page({ params }: { params: { category: string } }) {
+  const searchParams = useSearchParams()
 
   let movesToShow: Move[] = []
-  const moves = useMoveByCategory(params)
+  let movesToSort: Move[] = []
+  const movesByCategory = useMoveByCategory(params)
+  const movesByInputSearch = useMovesByInputSearch(searchParams.get('search'))
   const [searchInput, setSearchInput] = useState<string>('')
-  const [difficultyCheckbox, setDifficultyCheckBox] = useState<CheckboxState>({
+  const [difficultyCheckbox, setDifficultyCheckBox] = useState<Record<number, boolean>>({
     1: true,
     2: true,
     3: true,
   })
 
-  if (moves.length > 0) {
-    if (searchInput) {
-      movesToShow = moves.filter(
-        move =>
-          minimalizeText(move.title).includes(minimalizeText(searchInput)) &&
-          difficultyCheckbox[move.difficulty] == true,
-      )
-    } else {
-      movesToShow = moves.filter(move => difficultyCheckbox[move.difficulty] == true)
-    }
+  searchParams.get('search') ? (movesToSort = movesByInputSearch) : (movesToSort = movesByCategory)
+
+  if (searchInput) {
+    movesToShow = movesToSort.filter(
+      move =>
+        minimalizeText(move.title).includes(minimalizeText(searchInput)) && difficultyCheckbox[move.difficulty] == true,
+    )
+  } else {
+    movesToShow = movesToSort.filter(move => difficultyCheckbox[move.difficulty] == true)
   }
 
   return (

@@ -3,8 +3,9 @@ import style from './mostViewedMoves.module.scss'
 import Link from 'next/link'
 import { fetchMostViewedMoves } from '@/services/moves/singleMove'
 
-export default async function MostViewedMoves() {
-  const moves = await fetchMostViewedMoves()
+export default function MostViewedMoves() {
+  // const moves = await fetchMostViewedMoves()
+  const moves = []
 
   return (
     <div className={style.main}>

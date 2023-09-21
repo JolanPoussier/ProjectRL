@@ -9,10 +9,12 @@ import InputText from '@/UI/inputText/input'
 
 export default function SearchBar({
   displayModal,
+  submitAction,
   searchInput,
   setSearchInput,
 }: {
   displayModal?: () => void
+  submitAction?: () => void
   searchInput: string
   setSearchInput: React.Dispatch<React.SetStateAction<string>>
 }) {
@@ -24,8 +26,13 @@ export default function SearchBar({
   }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    handleClickToSubmit()
+  }
+
+  const handleClickToSubmit = () => {
     setOverlay(false)
     displayModal ? displayModal() : ''
+    submitAction ? submitAction() : ''
   }
 
   return (
@@ -43,7 +50,7 @@ export default function SearchBar({
               onChange={handleInputChange}
               onClick={() => setOverlay(true)}
             />
-            <button onClick={handleSubmit} className={style.searchIcon}>
+            <button onClick={handleClickToSubmit} className={style.searchIcon}>
               <Image alt="searchIcon" src={searchIcon} width={30} height={30} />
             </button>
           </div>
