@@ -18,7 +18,7 @@ export async function GET(_req: NextRequest, { params }: { params: { input: stri
     } else {
       return NextResponse.json({ success: false, error: 'Move not found' })
     }
-  } catch (e) {
+  } catch (e: unknown) {
     console.error(e)
     return NextResponse.json({ success: false, error: e })
   } finally {

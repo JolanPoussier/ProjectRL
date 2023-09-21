@@ -10,9 +10,9 @@ export default function SuggestionSide({
   setOverlay,
 }: {
   searchInput: string
-  resetInput: Function
-  displayModal?: Function
-  setOverlay: Function
+  resetInput: (input: string) => void
+  displayModal?: () => void
+  setOverlay: (appear: boolean) => void
 }) {
   let movesToShow = []
   movesToShow = moves.filter(
