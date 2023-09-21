@@ -26,10 +26,6 @@
     margin-bottom: 2em;
 }
 
-.element:hover {
-    opacity: 0.8;
-}
-
 .link {
     text-decoration: none;
     color: white;
@@ -39,9 +35,9 @@
     .element {
         width: 48%;
     }
-    .element:nth-last-child(-n+2) {
-        display: none;
-    }
+    // .element:nth-last-child(-n+2) {
+    //     display: none;
+    // }
 }
 
 @media screen and (max-width: 1000px) {
@@ -56,4 +52,60 @@
     .element {
         width:100%;
     }
+}
+
+
+/////////////
+/// CARD ////
+/////////////
+
+.card {
+    width: 100%;
+    height: 310px;
+    margin: auto;
+    background-color: var(--second-color);
+    border-radius: 12px;
+    margin-bottom: 3em;
+    transition-duration: 0.5s;
+}
+
+.card:hover {
+    background-color: var(--hover-color);
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px 12px 0 0;
+    object-fit: cover;
+    transition-duration: 0.5s;
+}
+
+.content {
+    padding: 1em;
+}
+
+.header {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title {
+    font-size: var(--title1);
+    font-weight: var(--semi-bold);
+    margin-right: 15px;
+}
+
+.stars * {
+    margin-top: 8px;
+    margin-right: 4px;
 }

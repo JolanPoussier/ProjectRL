@@ -1,7 +1,6 @@
-import MoveCard from '../moveCard/moveCard'
 import style from './mostViewedMoves.module.scss'
-import Link from 'next/link'
 import useMostViewedMoves from '@/services/moves/mostViewedMoves'
+import MostViewedMoveCard from './mostViewedMoveCard'
 
 export default function MostViewedMoves() {
   const moves = useMostViewedMoves()
@@ -12,9 +11,7 @@ export default function MostViewedMoves() {
       <div className={style.container}>
         {moves.map(move => (
           <div key={move.id} className={style.element}>
-            <Link className={style.link} href={`/${move.category.name}/${move.slug}`}>
-              <MoveCard {...move} description="" />
-            </Link>
+            <MostViewedMoveCard {...move} />
           </div>
         ))}
       </div>

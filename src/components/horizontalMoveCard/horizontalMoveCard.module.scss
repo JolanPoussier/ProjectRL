@@ -47,13 +47,6 @@
     font-size: var(--normal);
 }
 
-@media screen and (max-width: 1000px) {
-    .card {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
 @media screen and (max-width: 1200px) {
     .content {
         padding: 1em;
@@ -67,6 +60,13 @@
     }
     .image {
         width: 200px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
