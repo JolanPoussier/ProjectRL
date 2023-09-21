@@ -9,7 +9,7 @@ import Filters from '@/components/filters/filters'
 import FiltersMobile from '@/components/filters/filtersMobile'
 import { useState } from 'react'
 
-export default function Page({ params }: { params: { category: string } }) {
+export default function Page({ params }: { params: { category: string; also: string } }) {
   type CheckboxState = Record<number, boolean>
 
   let movesToShow: Move[] = []
@@ -21,7 +21,7 @@ export default function Page({ params }: { params: { category: string } }) {
     3: true,
   })
 
-  if (moves) {
+  if (moves.length > 0) {
     if (searchInput) {
       movesToShow = moves.filter(
         move =>

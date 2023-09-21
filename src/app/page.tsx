@@ -1,10 +1,11 @@
 import SearchBar from '@/components/filters/searchBar/searchBar'
 import style from './page.module.scss'
 import MostViewedMoves from '@/components/mostViewedMoves/mostViewedMoves'
-
-// `app/page.tsx` is the UI for the `/` URL
+// import { useState } from 'react'
 
 export default function Page() {
+  // const [searchInput, setSearchInput] = useState<string>('')
+
   return (
     <div className={style.main}>
       <h1 className={style.title}>Trouve ta mécanique</h1>

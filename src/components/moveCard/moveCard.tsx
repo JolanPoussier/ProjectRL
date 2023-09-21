@@ -1,5 +1,3 @@
-'use client'
-
 import style from './moveCard.module.scss'
 import starGenerator from '@/utils/starGenerator'
 
