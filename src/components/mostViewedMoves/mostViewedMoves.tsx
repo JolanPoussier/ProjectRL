@@ -1,11 +1,10 @@
 import MoveCard from '../moveCard/moveCard'
 import style from './mostViewedMoves.module.scss'
 import Link from 'next/link'
-import { fetchMostViewedMoves } from '@/services/moves/singleMove'
+import useMostViewedMoves from '@/services/moves/mostViewedMoves'
 
 export default function MostViewedMoves() {
-  // const moves = await fetchMostViewedMoves()
-  const moves = []
+  const moves = useMostViewedMoves()
 
   return (
     <div className={style.main}>
