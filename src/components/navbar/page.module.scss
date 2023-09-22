@@ -9,6 +9,7 @@
     display: flex;
     padding-left: 0.5em;
     position: fixed;
+    z-index: 1;
 }
 
 .container {
@@ -58,8 +59,11 @@
     @extend .main;
     display: none;
     justify-content: space-between;
-    z-index: 2;
     padding: 0 1em;
+}
+
+.arrowFiltersFilling {
+    width: 50px;
 }
 
 //BURGER M
@@ -109,11 +113,6 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-}
-
-.sideBarButton {
-    @extend .burgerButton;
-    padding-left: 5px; 
 }
 
 .closeButton {

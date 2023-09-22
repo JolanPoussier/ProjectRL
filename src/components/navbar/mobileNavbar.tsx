@@ -5,24 +5,19 @@ import style from './page.module.scss'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import logo from 'src/assets/logo/logoMobile.png'
-import burger from '@/assets/logo/menu.png'
-import sidebarArrow from '@/assets/logo/sidebarMobile.png'
+import burger from '@/assets/icons/menu.png'
 import { useState } from 'react'
-import SidebarMobile from '../sidebar/sidebarMobile'
+import { Category } from '@prisma/client'
 
-export default function MobileNavBar({ categories }: { categories: Array<any> }) {
+export default function MobileNavBar({ categories }: { categories: Category[] }) {
   const params = useParams()
 
   const [toggleBurger, setToggleBurger] = useState(false)
-  const [displaySideMenu, setdisplaySideMenu] = useState(false)
 
   function handleToggleBurger() {
     setToggleBurger(!toggleBurger)
   }
 
-  function handleDisplaySideMenu() {
-    setdisplaySideMenu(!displaySideMenu)
-  }
   return (
     <div className={style.mainMobile}>
       <div
@@ -30,17 +25,15 @@ export default function MobileNavBar({ categories }: { categories: Array<any> })
         onClick={handleToggleBurger}
       ></div>
 
-      <button className={style.sideBarButton} onClick={handleDisplaySideMenu}>
-        <Image src={sidebarArrow} alt="Logo du site" width={35} height={35} />
-      </button>
-
-      <SidebarMobile displaySideMenu={displaySideMenu} displayModal={() => setdisplaySideMenu(!displaySideMenu)} />
+      {/* TOCHECK Useless div to apply a flex property */}
+      <div className={style.arrowFiltersFilling}></div>
 
       <div className={style.logo}>
         <Link href={'/'}>
           <Image src={logo} alt="Logo du site" width={90} height={90} />
         </Link>
       </div>
+
       <button className={style.burgerButton} onClick={handleToggleBurger}>
         <Image src={burger} alt="burger menu" width={50} height={50} />
       </button>

@@ -4,7 +4,7 @@ import { fetchCategories } from '@/services/categories/categoriesServerSide'
 import { Category } from '@prisma/client'
 
 export default async function NavBar() {
-  let categories: Category[] = (await fetchCategories()) || []
+  const categories: Category[] = (await fetchCategories()) || []
 
   return (
     <>

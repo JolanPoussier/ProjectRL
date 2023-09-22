@@ -1,23 +1,18 @@
-'use client'
-
-import Image from 'next/image'
-import style from './horizontalMoveCard.module.scss'
-import starGenerator from '@/utils/starGenerator'
 import Link from 'next/link'
+import style from './mostViewedMoves.module.scss'
+import starGenerator from '@/utils/starGenerator'
+import Image from 'next/image'
 
-export default function HorizontalMoveCard({
+export default function MostViewedMoveCard({
   title,
   category,
-  summary,
   thumbnail,
   difficulty,
   slug,
 }: {
   title: string
-  category: string
-  summary: string
+  category: { name: string }
   thumbnail: string
-  id: number
   difficulty: number
   slug: string
 }) {
@@ -25,7 +20,7 @@ export default function HorizontalMoveCard({
 
   return (
     <div className={style.card}>
-      <Link className={style.link} href={`/${category}/${slug}`}>
+      <Link className={style.link} href={`/${category.name}/${slug}`}>
         <div className={style.imageContainer}>
           <Image
             className={style.image}
@@ -40,7 +35,6 @@ export default function HorizontalMoveCard({
             <h3 className={style.title}>{title}</h3>
             <div className={style.stars}>{starGenerator({ star })}</div>
           </div>
-          <p className={style.description}>{summary}</p>
         </div>
       </Link>
     </div>

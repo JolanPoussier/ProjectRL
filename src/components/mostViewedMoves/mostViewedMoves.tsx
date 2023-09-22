@@ -1,14 +1,9 @@
-import MoveCard from '../moveCard/moveCard'
-import moves from '@/services/moves/movesFakeDatas'
 import style from './mostViewedMoves.module.scss'
-import Link from 'next/link'
-import { fetchMostViewedMoves } from '@/services/moves/singleMove'
-import { Move } from '@prisma/client'
+import useMostViewedMoves from '@/services/moves/mostViewedMoves'
+import MostViewedMoveCard from './mostViewedMoveCard'
 
-export default async function MostViewedMoves() {
-  const moves = await fetchMostViewedMoves()
-  console.log(moves)
-  console.log('test')
+export default function MostViewedMoves() {
+  const moves = useMostViewedMoves()
 
   return (
     <div className={style.main}>
@@ -16,9 +11,7 @@ export default async function MostViewedMoves() {
       <div className={style.container}>
         {moves.map(move => (
           <div key={move.id} className={style.element}>
-            <Link className={style.link} href={`/${move.category.name}/${move.slug}`}>
-              <MoveCard {...move} description="" />
-            </Link>
+            <MostViewedMoveCard {...move} />
           </div>
         ))}
       </div>

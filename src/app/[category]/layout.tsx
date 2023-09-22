@@ -1,4 +1,3 @@
-import Sidebar from '@/components/sidebar/sidebar'
 import style from './page.module.scss'
 
 export default function categoryLayout({
@@ -8,7 +7,6 @@ export default function categoryLayout({
 }) {
   return (
     <section className={style.layout}>
-      <Sidebar />
       <div className={style.layoutContent}>{children}</div>
     </section>
   )

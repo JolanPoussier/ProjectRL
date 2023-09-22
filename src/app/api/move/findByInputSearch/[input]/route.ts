@@ -1,17 +1,16 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function GET() {
+export async function GET(_req: NextRequest, { params }: { params: { input: string } }) {
   try {
-    const homeMoves = await prisma.move.findMany({
-      orderBy: {
-        views: {
-          sort: 'desc',
+    const movesByInputSearch = await prisma.move.findMany({
+      where: {
+        slug: {
+          contains: params.input,
         },
       },
-      take: 6,
       include: {
         category: {
           select: {
@@ -21,8 +20,8 @@ export async function GET() {
       },
     })
 
-    if (homeMoves) {
-      return NextResponse.json({ success: true, data: homeMoves })
+    if (movesByInputSearch) {
+      return NextResponse.json({ success: true, data: movesByInputSearch })
     } else {
       return NextResponse.json({ success: false, error: 'Move not found' })
     }

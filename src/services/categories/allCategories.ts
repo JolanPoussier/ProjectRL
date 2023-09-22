@@ -1,14 +1,22 @@
 'use client'
 
+import { Category } from '@prisma/client'
 import { useEffect, useState } from 'react'
 
+export type ResponseJson<T> = {
+  success: boolean
+  data: T
+}
+
 export default function useCategories() {
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState<Category[]>([])
 
   useEffect(() => {
-    fetchCategories().then(data => {
-      setCategories(data.data)
-    })
+    fetchCategories()
+      .then(data => {
+        setCategories(data)
+      })
+      .catch(e => console.log(e))
   }, [])
 
   if (categories) {
@@ -18,6 +26,5 @@ export default function useCategories() {
 
 export async function fetchCategories() {
   const categories = await fetch('/api/category')
-  const finalDatas = await categories.json()
-  return finalDatas
+  return ((await categories.json()) as ResponseJson<Category[]>).data
 }

@@ -6,12 +6,12 @@
     margin-top: 8em;
 }
 
-.main {
+.cardsContainer {
     margin-left: 500px;
 }
 
 @media screen and (max-width: 1000px) {
-    .main {
+    .cardsContainer {
         margin-left: 0;
     }
 }

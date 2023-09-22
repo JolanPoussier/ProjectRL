@@ -1,44 +1,58 @@
 'use client'
 
-import { useCheckboxContext } from '@/contexts/CheckboxContext.tsx'
+import { useSearchParams } from 'next/navigation'
 import styles from './page.module.scss'
-import CategoryCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
-import useCategories from '@/services/categories/allCategories.ts'
+import HorizontalMoveCard from '@/components/horizontalMoveCard/horizontalMoveCard.tsx'
 import minimalizeText from '@/utils/minimalizeText.ts'
 import useMoveByCategory from '@/services/moves/movesSortByCategory.ts'
-import { Move, Category } from '@prisma/client'
+import { Move } from '@prisma/client'
+import Filters from '@/components/filters/filters'
+import FiltersMobile from '@/components/filters/filtersMobile'
+import { useState } from 'react'
+import useMovesByInputSearch from '@/services/moves/movesByInputSearch'
 
 export default function Page({ params }: { params: { category: string } }) {
-  const { checkboxState } = useCheckboxContext()
+  const searchParams = useSearchParams()
 
   let movesToShow: Move[] = []
-  const categories: Category[] = useCategories() || []
-  const moves = useMoveByCategory(params) || []
+  let movesToSort: Move[] = []
+  const movesByCategory = useMoveByCategory(params)
+  const movesByInputSearch = useMovesByInputSearch(searchParams.get('search'))
+  const [searchInput, setSearchInput] = useState<string>('')
+  const [difficultyCheckbox, setDifficultyCheckBox] = useState<Record<number, boolean>>({
+    1: true,
+    2: true,
+    3: true,
+  })
 
-  console.log(moves)
-  console.log(categories)
+  searchParams.get('search') ? (movesToSort = movesByInputSearch) : (movesToSort = movesByCategory)
 
-  if (categories) {
-    if (categories.some(category => category.name === params.category)) {
-      const currentCategory = categories.find(category => category.name === params.category) as Category
-      movesToShow = moves.filter(
-        move => move.categoryId === currentCategory.id && checkboxState[move.difficulty] === true,
-      )
-    } else {
-      // recherche du paramètre passé à l'URL par la searchBar dans le tableau de tous les objets, à transformer en requète API directment
-      movesToShow = moves.filter(
-        move =>
-          minimalizeText(move.title).includes(minimalizeText(params.category)) &&
-          checkboxState[move.difficulty] == true,
-      )
-    }
+  if (searchInput) {
+    movesToShow = movesToSort.filter(
+      move =>
+        minimalizeText(move.title).includes(minimalizeText(searchInput)) && difficultyCheckbox[move.difficulty] == true,
+    )
+  } else {
+    movesToShow = movesToSort.filter(move => difficultyCheckbox[move.difficulty] == true)
   }
 
   return (
     <div className={styles.main}>
+      <Filters
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        difficultyState={difficultyCheckbox}
+        setDifficulty={setDifficultyCheckBox}
+      />
+      <FiltersMobile
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        difficultyState={difficultyCheckbox}
+        setDifficulty={setDifficultyCheckBox}
+      />
       <div className={styles.cardsContainer}>
         {movesToShow.map(move => (
-          <CategoryCard {...move} key={move.slug} category={params.category} />
+          <HorizontalMoveCard {...move} key={move.slug} category={params.category} />
         ))}
       </div>
     </div>

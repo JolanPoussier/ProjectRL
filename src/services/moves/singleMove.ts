@@ -1,28 +1,24 @@
 import { PrismaClient } from '@prisma/client'
+import { NextResponse } from 'next/server'
 const prisma = new PrismaClient()
 
 export async function fetchUniqueMove(slug: string) {
-  return await prisma.move.findFirst({
-    where: {
-      slug: slug,
-    },
-  })
-}
+  try {
+    const movesByInputSearch = await prisma.move.findFirst({
+      where: {
+        slug: slug,
+      },
+    })
 
-export async function fetchMostViewedMoves() {
-  return await prisma.move.findMany({
-    orderBy: {
-      views: {
-        sort: 'desc',
-      },
-    },
-    take: 6,
-    include: {
-      category: {
-        select: {
-          name: true,
-        },
-      },
-    },
-  })
+    if (movesByInputSearch) {
+      return NextResponse.json({ success: true, data: movesByInputSearch })
+    } else {
+      return NextResponse.json({ success: false, error: 'Move not found' })
+    }
+  } catch (e: unknown) {
+    console.error(e)
+    return NextResponse.json({ success: false, error: e })
+  } finally {
+    await prisma.$disconnect()
+  }
 }
