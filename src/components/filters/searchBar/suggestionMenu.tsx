@@ -1,7 +1,8 @@
 import minimalizeText from '@/utils/minimalizeText'
 import style from './searchBar.module.scss'
-import moves from '@/services/moves/movesFakeDatas'
+// import moves from '@/services/moves/movesFakeDatas'
 import Link from 'next/link'
+import useMovesByInputSearch from '@/services/moves/movesByInputSearch'
 
 export default function SuggestionSide({
   searchInput,
@@ -14,12 +15,7 @@ export default function SuggestionSide({
   displayModal?: () => void
   setOverlay: (appear: boolean) => void
 }) {
-  let movesToShow = []
-  movesToShow = moves.filter(
-    move =>
-      move.category.includes(minimalizeText(searchInput)) ||
-      minimalizeText(move.title).includes(minimalizeText(searchInput)),
-  )
+  const movesToShow = useMovesByInputSearch(minimalizeText(searchInput))
 
   function handleClick() {
     resetInput('')
@@ -35,7 +31,7 @@ export default function SuggestionSide({
             className={style.suggestionLinks}
             key={move.id}
             onClick={handleClick}
-            href={`/${move.category}/${move.slug}`}
+            href={`/${move.category.name}/${move.slug}`}
           >
             <li className={style.suggestionItems}>{move.title}</li>
           </Link>

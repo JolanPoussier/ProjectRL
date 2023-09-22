@@ -11,6 +11,13 @@ export async function GET(_req: NextRequest, { params }: { params: { input: stri
           contains: params.input,
         },
       },
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      },
     })
 
     if (movesByInputSearch) {

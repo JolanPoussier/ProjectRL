@@ -1,7 +1,7 @@
 'use client'
 
-import { Move } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import { MoveWithCategoryName } from '../responsesType'
 
 export type ResponseJson<T> = {
   success: boolean
@@ -9,7 +9,7 @@ export type ResponseJson<T> = {
 }
 
 export default function useMovesByInputSearch(inputSearch: string) {
-  const [moves, setMoves] = useState<Move[]>([])
+  const [moves, setMoves] = useState<MoveWithCategoryName[]>([])
 
   useEffect(() => {
     inputSearch
@@ -28,5 +28,5 @@ export default function useMovesByInputSearch(inputSearch: string) {
 
 async function fetchMovesByInputSearch({ inputSearch }: { inputSearch: string }) {
   const moves = await fetch(`/api/move/findByInputSearch/${inputSearch}`)
-  return ((await moves.json()) as ResponseJson<Move[]>).data
+  return ((await moves.json()) as ResponseJson<MoveWithCategoryName[]>).data
 }

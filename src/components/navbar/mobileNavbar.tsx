@@ -7,8 +7,9 @@ import Image from 'next/image'
 import logo from 'src/assets/logo/logoMobile.png'
 import burger from '@/assets/icons/menu.png'
 import { useState } from 'react'
+import { Category } from '@prisma/client'
 
-export default function MobileNavBar({ categories }: { categories: Array<any> }) {
+export default function MobileNavBar({ categories }: { categories: Category[] }) {
   const params = useParams()
 
   const [toggleBurger, setToggleBurger] = useState(false)

@@ -5,8 +5,9 @@ import style from './page.module.scss'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import logo from 'src/assets/logo/logo.png'
+import { Category } from '@prisma/client'
 
-export default function NavBarComputer({ categories }: { categories: Array<any> }) {
+export default function NavBarComputer({ categories }: { categories: Category[] }) {
   const params = useParams()
 
   return (

@@ -10,7 +10,6 @@ export default function HorizontalMoveCard({
   category,
   summary,
   thumbnail,
-  id,
   difficulty,
   slug,
 }: {
