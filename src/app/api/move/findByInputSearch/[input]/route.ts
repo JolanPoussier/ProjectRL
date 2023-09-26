@@ -5,12 +5,27 @@ const prisma = new PrismaClient()
 
 export async function GET(_req: NextRequest, { params }: { params: { input: string } }) {
   try {
-    const movesByInputSearch = await prisma.move.findMany({
-      where: {
-        slug: {
-          contains: params.input,
-        },
+    const category = _req.nextUrl.searchParams.get('category')
+    const whereClause: {
+      slug: {
+        contains: string
+      }
+      category?: {
+        name: string
+      }
+    } = {
+      slug: {
+        contains: params.input,
       },
+    }
+
+    if (category) {
+      whereClause.category = {
+        name: category,
+      }
+    }
+    const movesByInputSearch = await prisma.move.findMany({
+      where: whereClause,
       include: {
         category: {
           select: {

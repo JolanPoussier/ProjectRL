@@ -30,7 +30,7 @@ export default function HorizontalMoveCard({
           <Image
             className={style.image}
             alt={`Image du move ${title}`}
-            src={`/img/thumbnails/${thumbnail}`}
+            src={`/img/thumbnails/${thumbnail}_th.png`}
             width={150}
             height={150}
           />

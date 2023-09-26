@@ -1,8 +1,8 @@
 import minimalizeText from '@/utils/minimalizeText'
 import style from './searchBar.module.scss'
-// import moves from '@/services/moves/movesFakeDatas'
 import Link from 'next/link'
 import useMovesByInputSearch from '@/services/moves/movesByInputSearch'
+import { usePathname } from 'next/navigation'
 
 export default function SuggestionSide({
   searchInput,
@@ -15,7 +15,9 @@ export default function SuggestionSide({
   displayModal?: () => void
   setOverlay: (appear: boolean) => void
 }) {
-  const movesToShow = useMovesByInputSearch(minimalizeText(searchInput))
+  const pathname = usePathname()
+  const category = pathname.split('/')[1]
+  const movesToShow = useMovesByInputSearch(minimalizeText(searchInput), category)
 
   function handleClick() {
     resetInput('')
