@@ -1,0 +1,17 @@
+.layout {
+    margin-top: 4em;
+}
+
+.layoutContent {
+    margin-top: 8em;
+}
+
+.cardsContainer {
+    margin-left: 500px;
+}
+
+@media screen and (max-width: 1000px) {
+    .cardsContainer {
+        margin-left: 0;
+    }
+}

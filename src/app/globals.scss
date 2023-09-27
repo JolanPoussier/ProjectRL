@@ -3,12 +3,13 @@
     --main-color: #1B1F2A;
     --second-color: #2D3B46;
     --third-color: #743EED;
+    --hover-color: #384957;
 
     /* A retravailler pour responsive */
-    --title1: 40px;
-    --title2: 32px;
+    --title1: 32px;
+    --title2: 26px;
     --normal: 18px;
-    --small: 14px;
+    --small: 16px;
 
     --medium: 500;
     --semi-bold: 600;
@@ -25,4 +26,5 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--main-color);
+  color: white;
 }

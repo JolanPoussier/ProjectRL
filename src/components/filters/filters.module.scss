@@ -1,0 +1,74 @@
+.main {
+    width: 400px;
+    height: 85%;
+    position: fixed;
+    z-index: 1;
+    top: 8em;
+    left: 2em;
+}
+
+//////////////
+/// MOBILE
+/////////////
+
+.mainMobile {
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: -100vw;
+    background: rgba($color: #000000, $alpha: 0.95) ;
+    transition: left 0.5s ease;
+    padding: 2em;
+    padding-top: 60px;
+    overflow: auto;
+}
+
+.mainMobile_active {
+    @extend .mainMobile;
+    left: 0;
+}
+
+.closeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;    
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+}
+
+.searchBar {
+    position: relative;
+}
+
+.filtersButton {
+    position: fixed;
+    top: 20px;
+    left: 5px;
+    z-index: 3;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+///////////////
+/// RESPONSIVE
+//////////////
+
+
+@media screen and (max-width: 1000px) {
+    .main {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 999px) {
+    .mainMobile, .filtersButton {
+        display: none;
+    }
+}

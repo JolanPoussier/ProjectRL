@@ -1,0 +1,65 @@
+.card {
+    width: 100%;
+    margin: auto;
+    max-width: 1000px;
+    background-color: var(--second-color);
+    border-radius: 12px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--title1);
+    font-weight: var(--semi-bold);
+    margin-right: 15px;
+}
+
+.stars * {
+    margin-right: 4px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text {
+    font-size: var(--normal);
+    line-height: 1.5em;
+    margin-top: 1.5em;
+}
+
+.iframeYT {
+    width: 100%;
+    min-height: 30vh;
+    height: 30vw;
+}
+
+//////////////
+/// RESPONSIVE
+/////////////
+
+
+@media screen and (max-width: 1200px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .stars {
+        padding-top: 4px;
+    }
+    .card {
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+}
