@@ -3,7 +3,7 @@ import style from './page.module.scss'
 import { fetchUniqueMove } from '@/services/moves/singleMove'
 import { Move } from '@prisma/client'
 import BackArrow from '@/components/backArrow/backArrow'
-import { ResponseJson } from '@/services/responsesType'
+import { ResponseJson } from '@/services/types'
 
 export default async function Page({ params }: { params: { category: string; move: string } }) {
   const move = await fetchUniqueMove(params.move)
