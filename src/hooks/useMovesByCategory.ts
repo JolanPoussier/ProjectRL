@@ -1,14 +1,10 @@
 'use client'
 
+import { ResponseJson } from '@/services/types'
 import { Move } from '@prisma/client'
 import { useEffect, useState } from 'react'
 
-export type ResponseJson<T> = {
-  success: boolean
-  data: T
-}
-
-export default function useMoveByCategory({ category }: { category: string }) {
+export default function useMovesByCategory({ category }: { category: string }) {
   const [moves, setMoves] = useState<Move[]>([])
 
   useEffect(() => {
@@ -25,6 +21,6 @@ export default function useMoveByCategory({ category }: { category: string }) {
 }
 
 async function fetchMovesByCategory({ category }: { category: string }) {
-  const moves = await fetch(`/api/move/findByCategory/${category}`)
+  const moves = await fetch(`/api/moves?category=${category}`)
   return ((await moves.json()) as ResponseJson<Move[]>).data
 }

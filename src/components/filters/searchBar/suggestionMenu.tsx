@@ -1,8 +1,8 @@
 import minimalizeText from '@/utils/minimalizeText'
 import style from './searchBar.module.scss'
 import Link from 'next/link'
-import useMovesByInputSearch from '@/services/moves/movesByInputSearch'
 import { usePathname } from 'next/navigation'
+import useMovesByInputSearch from '@/hooks/useMovesByInputSearch'
 
 export default function SuggestionSide({
   searchInput,

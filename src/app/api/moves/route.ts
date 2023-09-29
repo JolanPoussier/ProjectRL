@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import { moveService } from '@/services/move-services'
 
 const prisma = new PrismaClient()
 
-export async function GET(_req: NextRequest, { params }: { params: { name: string } }) {
+export async function GET(_req: NextRequest) {
+  const category = _req.nextUrl.searchParams.get('category')
+  const homePageMoves = _req.nextUrl.searchParams.get('home')
+  const home = homePageMoves !== null ? true : false
+  const input = _req.nextUrl.searchParams.get('input')
+
   try {
-    const movesByCategory = await prisma.move.findMany({
-      where: {
-        category: {
-          name: params.name,
-        },
-      },
-    })
+    const movesByCategory = await moveService.getMoves(category, home, input)
 
     if (movesByCategory) {
       return NextResponse.json({ success: true, data: movesByCategory })
