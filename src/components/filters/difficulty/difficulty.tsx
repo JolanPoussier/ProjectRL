@@ -2,7 +2,7 @@
 
 import style from './difficulty.module.scss'
 import DifficultyRow from './difficultyRow'
-import { difficultyDatas } from '@/services/difficulties/difficultyDatas'
+import { difficultyDatas } from '@/services/difficultyDatas'
 
 export default function Difficulty({
   difficultyState,

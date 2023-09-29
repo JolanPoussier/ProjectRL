@@ -20,6 +20,6 @@ export default function useMostViewedMoves() {
 }
 
 async function fetchMovesByViews() {
-  const moves = await fetch(`/api/move?home=true`)
+  const moves = await fetch(`/api/moves?home=true`)
   return ((await moves.json()) as ResponseJson<MoveWithCategoryName[]>).data
 }

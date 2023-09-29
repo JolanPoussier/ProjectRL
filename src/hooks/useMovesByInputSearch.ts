@@ -24,6 +24,6 @@ export default function useMovesByInputSearch(inputSearch: string, categoryPage?
 async function fetchMovesByInputSearch({ inputSearch, categoryPage }: { inputSearch: string; categoryPage?: string }) {
   let URLParams
   categoryPage ? (URLParams = `?category=${categoryPage}&input=${inputSearch}`) : (URLParams = `?input=${inputSearch}`)
-  const moves = await fetch(`/api/move${URLParams}`)
+  const moves = await fetch(`/api/moves${URLParams}`)
   return ((await moves.json()) as ResponseJson<MoveWithCategoryName[]>).data
 }

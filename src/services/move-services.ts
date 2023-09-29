@@ -24,19 +24,19 @@ class MoveService {
   }
 
   public async getMoves(category?: string, home?: boolean, input?: string): Promise<MoveWithCategoryName[]> {
-    const orderByClause: {
+    let orderByClause: {
       views?: {
         sort: 'asc' | 'desc'
       }
     } = {}
     let takeClause: number
     let includeClause: {
-      category: {
+      category?: {
         select: {
           name: boolean
         }
       }
-    }
+    } = {}
     const whereClause: {
       slug?: {
         contains: string
@@ -47,9 +47,19 @@ class MoveService {
     } = {}
 
     if (home) {
-      orderByClause.views.sort = 'desc'
+      orderByClause = {
+        views: {
+          sort: 'desc',
+        },
+      }
       takeClause = 6
-      includeClause.category.select.name = true
+      includeClause = {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      }
     }
     if (category) {
       whereClause.category = {
@@ -57,9 +67,17 @@ class MoveService {
       }
     }
     if (input) {
-      whereClause.slug.contains = input
+      whereClause.slug = {
+        contains: input,
+      }
+      includeClause = {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      }
     }
-
     const moves = await this.prismaClient.move.findMany({
       orderBy: orderByClause,
       where: whereClause,

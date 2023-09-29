@@ -1,6 +1,6 @@
 import style from './mostViewedMoves.module.scss'
-import useMostViewedMoves from '@/services/moves/mostViewedMoves'
 import MostViewedMoveCard from './mostViewedMoveCard'
+import useMostViewedMoves from '@/hooks/useMostViewedMoves'
 
 export default function MostViewedMoves() {
   const moves = useMostViewedMoves()

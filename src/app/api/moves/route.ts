@@ -9,7 +9,6 @@ export async function GET(_req: NextRequest) {
   const homePageMoves = _req.nextUrl.searchParams.get('home')
   const home = homePageMoves !== null ? true : false
   const input = _req.nextUrl.searchParams.get('input')
-  console.log(category)
 
   try {
     const movesByCategory = await moveService.getMoves(category, home, input)
@@ -26,5 +25,3 @@ export async function GET(_req: NextRequest) {
     await prisma.$disconnect()
   }
 }
-
-//Service fonctionnel pour move avec hook useMovesByCateg foncitonnel, donc ok pour ça

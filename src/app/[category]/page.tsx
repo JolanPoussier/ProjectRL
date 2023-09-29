@@ -8,17 +8,15 @@ import { Move } from '@prisma/client'
 import Filters from '@/components/filters/filters'
 import FiltersMobile from '@/components/filters/filtersMobile'
 import { useState } from 'react'
-import useMovesByInputSearch from '@/services/moves/movesByInputSearch'
 import useMovesByCategory from '@/hooks/useMovesByCategory'
+import useMovesByInputSearch from '@/hooks/useMovesByInputSearch'
 
 export default function Page({ params }: { params: { category: string } }) {
   const searchParams = useSearchParams()
 
   let movesToShow: Move[] = []
   let movesToSort: Move[] = []
-  // const movesByCategory = useMoveByCategory(params)
   const movesByCategory = useMovesByCategory(params)
-  console.log(movesByCategory)
   const movesByInputSearch = useMovesByInputSearch(searchParams.get('search'))
   const [searchInput, setSearchInput] = useState<string>('')
   const [difficultyCheckbox, setDifficultyCheckBox] = useState<Record<number, boolean>>({
