@@ -1,10 +1,10 @@
 'use client'
 
-import { MoveWithCategoryName, ResponseJson } from '@/services/types'
+import { MoveWithCategory, ResponseJson } from '@/services/types'
 import { useEffect, useState } from 'react'
 
 export default function useMovesByInputSearch(inputSearch: string, categoryPage?: string) {
-  const [moves, setMoves] = useState<MoveWithCategoryName[]>([])
+  const [moves, setMoves] = useState<MoveWithCategory[]>([])
 
   useEffect(() => {
     inputSearch
@@ -25,5 +25,5 @@ async function fetchMovesByInputSearch({ inputSearch, categoryPage }: { inputSea
   let URLParams
   categoryPage ? (URLParams = `?category=${categoryPage}&input=${inputSearch}`) : (URLParams = `?input=${inputSearch}`)
   const moves = await fetch(`/api/moves${URLParams}`)
-  return ((await moves.json()) as ResponseJson<MoveWithCategoryName[]>).data
+  return ((await moves.json()) as ResponseJson<MoveWithCategory[]>).data
 }

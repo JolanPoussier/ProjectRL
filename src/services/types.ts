@@ -1,4 +1,4 @@
-export interface MoveWithCategoryName {
+export interface MoveWithCategory {
   id: number
   title: string
   difficulty: number

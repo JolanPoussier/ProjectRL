@@ -1,27 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-import { moveService } from '@/services/move-services'
-
-const prisma = new PrismaClient()
+import { moveService } from '@/services/move-service'
 
 export async function GET(_req: NextRequest) {
   const category = _req.nextUrl.searchParams.get('category')
-  const homePageMoves = _req.nextUrl.searchParams.get('home')
-  const home = homePageMoves !== null ? true : false
-  const input = _req.nextUrl.searchParams.get('input')
+  const orderBy = _req.nextUrl.searchParams.get('orderBy')
+  const sort: 'asc' | 'desc' = _req.nextUrl.searchParams.get('sort') as 'asc' | 'desc'
+  const take = parseInt(_req.nextUrl.searchParams.get('take'))
+  const include = _req.nextUrl.searchParams.get('include')
+  const slugSearch = _req.nextUrl.searchParams.get('input')
 
   try {
-    const movesByCategory = await moveService.getMoves(category, home, input)
+    const moves = await moveService.getMoves({
+      orderBy,
+      sort,
+      take,
+      include,
+      where: { category, slugSearch },
+    })
 
-    if (movesByCategory) {
-      return NextResponse.json({ success: true, data: movesByCategory })
+    if (moves) {
+      return NextResponse.json({ success: true, data: moves })
     } else {
       return NextResponse.json({ success: false, error: 'Move not found' })
     }
   } catch (e: unknown) {
     console.error(e)
     return NextResponse.json({ success: false, error: e })
-  } finally {
-    await prisma.$disconnect()
   }
 }
