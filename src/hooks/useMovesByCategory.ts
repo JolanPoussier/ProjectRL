@@ -21,6 +21,6 @@ export default function useMovesByCategory({ category }: { category: string }) {
 }
 
 async function fetchMovesByCategory({ category }: { category: string }) {
-  const moves = await fetch(`/api/moves?category=${category}`)
+  const moves = await fetch(`/api/moves?category=${category}&orderBy=difficulty&sort=asc`)
   return ((await moves.json()) as ResponseJson<Move[]>).data
 }
