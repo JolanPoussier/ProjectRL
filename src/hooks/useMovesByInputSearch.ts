@@ -1,15 +1,10 @@
 'use client'
 
+import { MoveWithCategory, ResponseJson } from '@/services/types'
 import { useEffect, useState } from 'react'
-import { MoveWithCategoryName } from '../responsesType'
-
-export type ResponseJson<T> = {
-  success: boolean
-  data: T
-}
 
 export default function useMovesByInputSearch(inputSearch: string, categoryPage?: string) {
-  const [moves, setMoves] = useState<MoveWithCategoryName[]>([])
+  const [moves, setMoves] = useState<MoveWithCategory[]>([])
 
   useEffect(() => {
     inputSearch
@@ -28,7 +23,7 @@ export default function useMovesByInputSearch(inputSearch: string, categoryPage?
 
 async function fetchMovesByInputSearch({ inputSearch, categoryPage }: { inputSearch: string; categoryPage?: string }) {
   let URLParams
-  categoryPage ? (URLParams = `${inputSearch}?category=${categoryPage}`) : (URLParams = inputSearch)
-  const moves = await fetch(`/api/move/findByInputSearch/${URLParams}`)
-  return ((await moves.json()) as ResponseJson<MoveWithCategoryName[]>).data
+  categoryPage ? (URLParams = `?category=${categoryPage}&input=${inputSearch}`) : (URLParams = `?input=${inputSearch}`)
+  const moves = await fetch(`/api/moves${URLParams}`)
+  return ((await moves.json()) as ResponseJson<MoveWithCategory[]>).data
 }

@@ -1,21 +1,17 @@
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { categoryService } from '@/services/category-service'
 
 export async function GET() {
   try {
-    const allCateg = await prisma.category.findMany()
+    const categories = await categoryService.getCategories()
 
-    if (allCateg) {
-      return NextResponse.json({ success: true, data: allCateg })
+    if (categories) {
+      return NextResponse.json({ success: true, data: categories })
     } else {
       return NextResponse.json({ success: false, error: 'Move not found' })
     }
   } catch (e: unknown) {
     console.error(e)
     return NextResponse.json({ success: false, error: e })
-  } finally {
-    await prisma.$disconnect()
   }
 }
