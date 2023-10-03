@@ -22,7 +22,7 @@ model Move {
   slug        String    @db.VarChar(100)
   summary     String    @db.VarChar(255)
   description String
-  views       Int?
+  views       Int?      @default(0)
   thumbnail   String    @db.VarChar(255)
   video       String    @db.VarChar(255)
   createdAt   DateTime  @default(now()) @db.Timestamp(6)

@@ -1,10 +1,10 @@
 'use client'
 
-import { MoveWithCategoryName, ResponseJson } from '@/services/types'
+import { MoveWithCategory, ResponseJson } from '@/services/types'
 import { useEffect, useState } from 'react'
 
 export default function useMostViewedMoves() {
-  const [moves, setMoves] = useState<MoveWithCategoryName[]>([])
+  const [moves, setMoves] = useState<MoveWithCategory[]>([])
 
   useEffect(() => {
     fetchMovesByViews()
@@ -20,6 +20,6 @@ export default function useMostViewedMoves() {
 }
 
 async function fetchMovesByViews() {
-  const moves = await fetch(`/api/moves?home=true`)
-  return ((await moves.json()) as ResponseJson<MoveWithCategoryName[]>).data
+  const moves = await fetch(`/api/moves?orderBy=views&sort=desc&take=6&include=category`)
+  return ((await moves.json()) as ResponseJson<MoveWithCategory[]>).data
 }

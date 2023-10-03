@@ -4,7 +4,7 @@ import { getPrismaClient } from './getPrismaClient.ts'
 class CategoryService {
   private prismaClient: PrismaClient
 
-  private constructor() {
+  constructor() {
     this.prismaClient = getPrismaClient()
   }
 
@@ -18,4 +18,4 @@ class CategoryService {
     return categories
   }
 }
-export const categoryService = CategoryService.create()
+export const categoryService = new CategoryService()
