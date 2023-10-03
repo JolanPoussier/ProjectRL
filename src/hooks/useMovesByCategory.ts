@@ -11,6 +11,7 @@ export default function useMovesByCategory({ category }: { category: string }) {
     fetchMovesByCategory({ category })
       .then(data => {
         setMoves(data)
+        console.log(data)
       })
       .catch(e => console.log(e))
   }, [category])

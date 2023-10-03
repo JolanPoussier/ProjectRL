@@ -17,6 +17,7 @@ export default function Page({ params }: { params: { category: string } }) {
   let movesToShow: Move[] = []
   let movesToSort: Move[] = []
   const movesByCategory = useMovesByCategory(params)
+  console.log(movesByCategory)
   const movesByInputSearch = useMovesByInputSearch(searchParams.get('search'))
   const [searchInput, setSearchInput] = useState<string>('')
   const [difficultyCheckbox, setDifficultyCheckBox] = useState<Record<number, boolean>>({
