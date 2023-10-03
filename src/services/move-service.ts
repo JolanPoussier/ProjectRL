@@ -30,6 +30,7 @@ class MoveService {
   }): Promise<Move[]> {
     const orderByClause: Record<string, 'asc' | 'desc'> = {}
     const includeClause: Record<string, boolean> = {}
+    let takeClause: number
     const whereClause: {
       slug?: {
         contains: string
@@ -45,7 +46,9 @@ class MoveService {
     if (params.include) {
       includeClause[params.include] = true
     }
-
+    if (params.take) {
+      takeClause = params.take
+    }
     if (params.where.category) {
       whereClause.category = {
         name: params.where.category,
@@ -59,7 +62,7 @@ class MoveService {
     const moves = await this.prismaClient.move.findMany({
       orderBy: orderByClause,
       where: whereClause,
-      take: params.take,
+      take: takeClause,
       include: includeClause,
     })
     return moves
