@@ -33,9 +33,8 @@ export default function DifficultyRow({
         {difficulty}
         <div className={style.imagesContainer}>
           {ranks.map(rank => (
-            <Image key={id} src={`/img/logoRanks/${rank}.png`} alt="image of the ranks" width={40} height={40} />
+            <Image key={rank} src={`/img/logoRanks/${rank}.png`} alt="image of the ranks" width={40} height={40} />
           ))}
-          {/* <Image src={`/img/logoRanks/lessThan.png`} alt="image of the ranks" width={25} height={25} /> */}
         </div>
       </div>
     </div>
