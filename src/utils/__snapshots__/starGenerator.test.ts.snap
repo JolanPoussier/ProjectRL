@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`starGenerator renders stars correctly 1`] = `
+[
+  0,
+  1,
+  2,
+]
+`;
