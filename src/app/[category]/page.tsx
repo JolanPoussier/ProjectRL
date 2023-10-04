@@ -27,7 +27,6 @@ export default function Page({ params }: { params: { category: string } }) {
 
   useEffect(() => {
     const storedDatas = updateLocalStorage(undefined, 'difficulty')
-    console.log(storedDatas)
     if (storedDatas) {
       setDifficultyCheckBox(storedDatas)
     }
