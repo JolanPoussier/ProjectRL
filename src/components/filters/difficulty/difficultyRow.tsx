@@ -4,6 +4,7 @@ import style from './difficulty.module.scss'
 import starGenerator from '@/utils/starGenerator'
 import Checkbox from '@/UI/checkbox/checkbox'
 import Image from 'next/image'
+import updateLocalStorage from '@/hooks/updateLocalStorage'
 
 export default function DifficultyRow({
   star,
@@ -26,7 +27,10 @@ export default function DifficultyRow({
         classMain={style.checkbox}
         classInput={style.checkboxInput}
         checked={difficultyState[id]}
-        changeFunction={() => setDifficulty({ ...difficultyState, [id]: !difficultyState[id] })}
+        changeFunction={() => {
+          setDifficulty({ ...difficultyState, [id]: !difficultyState[id] })
+          updateLocalStorage({ name: 'difficulty', value: { ...difficultyState, [id]: !difficultyState[id] } })
+        }}
       />
       <div className={style.starContainer}>{starGenerator({ star })}</div>
       <div className={style.rankContainer}>
