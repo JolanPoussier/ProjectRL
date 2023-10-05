@@ -10,7 +10,7 @@ import FiltersMobile from '@/components/filters/filtersMobile'
 import { useEffect, useState } from 'react'
 import useMovesByCategory from '@/hooks/useMovesByCategory'
 import useMovesByInputSearch from '@/hooks/useMovesByInputSearch'
-import updateLocalStorage from '@/hooks/updateLocalStorage'
+import updateLocalStorage from '@/utils/updateLocalStorage'
 
 export default function Page({ params }: { params: { category: string } }) {
   const searchParams = useSearchParams()

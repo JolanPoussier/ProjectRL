@@ -4,7 +4,7 @@ import style from './difficulty.module.scss'
 import starGenerator from '@/utils/starGenerator'
 import Checkbox from '@/UI/checkbox/checkbox'
 import Image from 'next/image'
-import updateLocalStorage from '@/hooks/updateLocalStorage'
+import updateLocalStorage from '@/utils/updateLocalStorage'
 
 export default function DifficultyRow({
   star,
