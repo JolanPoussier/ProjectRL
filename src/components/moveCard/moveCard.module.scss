@@ -13,6 +13,12 @@
     margin-bottom: 1.5em;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
 }
 
 .title {
@@ -43,13 +49,69 @@
     height: 30vw;
 }
 
+///////////////////
+/// ControllerModal
+///////////////////
+
+.controllerButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.controllerModal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+}
+
+.controllerModalOn {
+    @extend .controllerModal;
+    display: block;
+}
+
+.controllerDisplay {
+    display: none;
+    position: absolute;
+    top: 10vh;
+    right: 10vw;
+    z-index: 6
+}
+
+.controllerDisplayOn {
+    @extend .controllerDisplay;
+    display: block;
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+}
+
+.modalCloseButton:hover {
+    cursor: pointer;
+}
+
+.modalRotateIcon {
+    position: absolute;
+    bottom: 20vh;
+    right: 42vw;
+    display: none;
+}
+
 //////////////
 /// RESPONSIVE
 /////////////
 
 
 @media screen and (max-width: 1200px) {
-    .header {
+    .headerLeft {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -61,5 +123,18 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
+    .controllerDisplay {
+        left: 2vw;
+        width: 95%;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .controllerDisplay {
+        transform: rotate(90deg);
+    }
+    .modalRotateIcon {
+        display: block;
+    }
 }
