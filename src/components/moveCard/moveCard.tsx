@@ -1,3 +1,4 @@
+import ControllerModal from './controllerModal'
 import style from './moveCard.module.scss'
 import starGenerator from '@/utils/starGenerator'
 
@@ -17,8 +18,11 @@ export default function MoveCard({
   return (
     <div className={style.card}>
       <div className={style.header}>
-        <h3 className={style.title}>{title}</h3>
-        <div className={style.stars}>{starGenerator({ star })}</div>
+        <div className={style.headerLeft}>
+          <h3 className={style.title}>{title}</h3>
+          <div className={style.stars}>{starGenerator({ star })}</div>
+        </div>
+        <ControllerModal />
       </div>
       <div className={style.imageContainer}>
         <iframe

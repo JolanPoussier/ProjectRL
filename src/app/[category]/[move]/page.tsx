@@ -8,8 +8,10 @@ export default async function Page({ params }: { params: { category: string; mov
 
   return (
     <div className={style.main}>
-      <BackArrow />
-      <MoveCard {...moveToDisplay} />
+      <div className={style.mainContent}>
+        <BackArrow />
+        <MoveCard {...moveToDisplay} />
+      </div>
     </div>
   )
 }
