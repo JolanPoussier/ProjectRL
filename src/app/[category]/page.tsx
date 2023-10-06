@@ -7,13 +7,13 @@ import minimalizeText from '@/utils/minimalizeText.ts'
 import { Move } from '@prisma/client'
 import Filters from '@/components/filters/filters'
 import FiltersMobile from '@/components/filters/filtersMobile'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useMovesByCategory from '@/hooks/useMovesByCategory'
 import useMovesByInputSearch from '@/hooks/useMovesByInputSearch'
+import updateLocalStorage from '@/utils/updateLocalStorage'
 
 export default function Page({ params }: { params: { category: string } }) {
   const searchParams = useSearchParams()
-
   let movesToShow: Move[] = []
   let movesToSort: Move[] = []
   const movesByCategory = useMovesByCategory(params)
@@ -24,6 +24,13 @@ export default function Page({ params }: { params: { category: string } }) {
     2: true,
     3: true,
   })
+
+  useEffect(() => {
+    const storedDatas = updateLocalStorage(undefined, 'difficulty')
+    if (storedDatas) {
+      setDifficultyCheckBox(storedDatas)
+    }
+  }, [])
 
   searchParams.get('search') ? (movesToSort = movesByInputSearch) : (movesToSort = movesByCategory)
 

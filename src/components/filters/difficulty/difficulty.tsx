@@ -17,7 +17,7 @@ export default function Difficulty({
       <div className={style.container}>
         {difficultyDatas.map(level => (
           <DifficultyRow
-            key={level.ranks}
+            key={level.star}
             {...level}
             id={level.star}
             difficultyState={difficultyState}

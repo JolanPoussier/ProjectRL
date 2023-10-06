@@ -30,6 +30,7 @@
 
 .element:hover {
     background-color: var(--hover-color);
+    border-radius: 10px;
 }
 
 .link {
@@ -49,6 +50,8 @@
 .link_active {
     @extend .link;
     border-bottom: 4px solid var(--third-color);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 /////////////////
@@ -78,6 +81,7 @@
     background: rgba($color: #000000, $alpha: 0.9) ;
     padding-top: 60px;
     transition: right 0.5s ease;
+    overflow-y: auto;
 }
 
 .menuBurger_active {

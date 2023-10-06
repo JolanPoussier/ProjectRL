@@ -1,23 +1,23 @@
 type Level = {
   star: number
   difficulty: string
-  ranks: string
+  ranks: string[]
 }
 
 export const difficultyDatas: Level[] = [
   {
     star: 1,
     difficulty: 'Facile ',
-    ranks: ' <= Diamond ',
+    ranks: ['silver', 'gold', 'platine'],
   },
   {
     star: 2,
     difficulty: 'Normal ',
-    ranks: ' < GC ',
+    ranks: ['diamond', 'champion'],
   },
   {
     star: 3,
     difficulty: 'Difficile ',
-    ranks: ' > GC ',
+    ranks: ['grandChampion', 'ssl'],
   },
 ]

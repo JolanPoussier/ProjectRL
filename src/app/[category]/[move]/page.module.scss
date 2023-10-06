@@ -1,9 +1,9 @@
 .main {
-    margin: 5%;
+    padding: 5%;
+    height: 100vh;
+    padding-top: 8em;
 }
 
-@media screen and (max-width: 1000px) {
-    .main {
-        margin-left: 5%;
-    }
+.mainContent {
+    padding-bottom: 4em;
 }

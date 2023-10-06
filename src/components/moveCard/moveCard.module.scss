@@ -13,6 +13,12 @@
     margin-bottom: 1.5em;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
 }
 
 .title {
@@ -43,13 +49,90 @@
     height: 30vw;
 }
 
+///////////////////
+/// ControllerModal
+///////////////////
+
+.controllerButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.controllerOverlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+}
+
+.controllerOverlayOn {
+    @extend .controllerOverlay;
+    display: block;
+}
+
+.controllerDisplay {
+    display: none;
+    position: fixed;
+    top: 10vh;
+    right: 10vw;
+    z-index: 6;
+}
+
+.controllerImage{
+    width: 100%;
+    height:100%;
+    animation-duration: 0.5s;
+    animation-name: grow;
+}
+
+@keyframes grow {
+    from {
+            height: 0%;
+            width: 0%;
+        }
+    
+    to {
+            height: 100%;
+            width: 100%;
+        }
+}
+
+.controllerDisplayOn {
+    @extend .controllerDisplay;
+    display: flex;
+    justify-content: end;
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    z-index: 10;
+}
+
+.modalCloseButton:hover {
+    cursor: pointer;
+}
+
+.modalRotateIcon {
+    position: absolute;
+    bottom: 15vh;
+    right: 42vw;
+    display: none;
+}
+
 //////////////
 /// RESPONSIVE
 /////////////
 
 
 @media screen and (max-width: 1200px) {
-    .header {
+    .headerLeft {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -61,5 +144,23 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
+    .controllerDisplay {
+        left: 2vw;
+        width: 90%;
+    }
+}
+@media screen and (max-width: 600px) {
+    @media screen and (orientation: portrait) {
+        .controllerDisplay {
+            transform: rotate(90deg);
+            width: 60vh;
+            height: 80vw;
+            left: calc(-30vh + 40vw);
+            top: 15vh;
+        }
+        .modalRotateIcon {
+            display: block;
+        }
+    }
 }
