@@ -45,7 +45,7 @@ export default function SearchBar({
         <form onSubmit={handleSubmit}>
           <div className={searchInput && overlay ? style.inputDivBorder : style.inputDiv}>
             <InputText
-              placeholder="Trouve ta méchanique"
+              placeholder="Trouve ta mécanique"
               value={searchInput}
               onChange={handleInputChange}
               onClick={() => setOverlay(true)}
