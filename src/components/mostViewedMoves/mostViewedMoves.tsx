@@ -1,9 +1,16 @@
 import style from './mostViewedMoves.module.scss'
 import MostViewedMoveCard from './mostViewedMoveCard'
-import useMostViewedMoves from '@/hooks/useMostViewedMoves'
+import { moveService } from '@/services/move-service'
+import { MoveWithCategory } from '@/services/types'
 
-export default function MostViewedMoves() {
-  const moves = useMostViewedMoves()
+export default async function MostViewedMoves() {
+  const moves = (await moveService.getMoves({
+    orderBy: 'views',
+    sort: 'desc',
+    take: 6,
+    include: 'category',
+    where: { category: null, slugSearch: null },
+  })) as MoveWithCategory[]
 
   return (
     <div className={style.main}>

@@ -6,22 +6,23 @@ import searchIcon from '@/assets/icons/searchIcon.png'
 import Image from 'next/image'
 import SuggestionSide from './suggestionMenu'
 import InputText from '@/UI/inputText/input'
+import { useRouter } from 'next/navigation'
 
 export default function SearchBar({
   displayModal,
   submitAction,
-  searchInput,
-  setSearchInput,
+  submitRedirection,
 }: {
   displayModal?: () => void
   submitAction?: () => void
-  searchInput: string
-  setSearchInput: React.Dispatch<React.SetStateAction<string>>
+  submitRedirection?: string
 }) {
+  const [searchInputHome, setSearchInputHome] = useState<string>('')
   const [overlay, setOverlay] = useState(false)
+  const router = useRouter()
 
   const handleInputChange = (inputChange: string) => {
-    setSearchInput(inputChange)
+    setSearchInputHome(inputChange)
     inputChange === '' ? setOverlay(false) : setOverlay(true)
   }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -33,6 +34,7 @@ export default function SearchBar({
     setOverlay(false)
     displayModal ? displayModal() : ''
     submitAction ? submitAction() : ''
+    router.push(`${submitRedirection}${searchInputHome}`)
   }
 
   return (
@@ -43,10 +45,10 @@ export default function SearchBar({
       ></div>
       <div className={style.formContainer}>
         <form onSubmit={handleSubmit}>
-          <div className={searchInput && overlay ? style.inputDivBorder : style.inputDiv}>
+          <div className={searchInputHome && overlay ? style.inputDivBorder : style.inputDiv}>
             <InputText
               placeholder="Trouve ta mécanique"
-              value={searchInput}
+              value={searchInputHome}
               onChange={handleInputChange}
               onClick={() => setOverlay(true)}
             />
@@ -55,10 +57,10 @@ export default function SearchBar({
             </button>
           </div>
         </form>
-        {searchInput && overlay && (
+        {searchInputHome && overlay && (
           <SuggestionSide
-            searchInput={searchInput}
-            resetInput={setSearchInput}
+            searchInput={searchInputHome}
+            resetInput={setSearchInputHome}
             displayModal={displayModal}
             setOverlay={setOverlay}
           />
