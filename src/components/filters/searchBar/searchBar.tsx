@@ -1,12 +1,12 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import style from './searchBar.module.scss'
 import searchIcon from '@/assets/icons/searchIcon.png'
 import Image from 'next/image'
 import SuggestionSide from './suggestionMenu'
 import InputText from '@/UI/inputText/input'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 export default function SearchBar({
   displayModal,
@@ -17,13 +17,28 @@ export default function SearchBar({
   submitAction?: () => void
   submitRedirection?: string
 }) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
   const [searchInputHome, setSearchInputHome] = useState<string>('')
   const [overlay, setOverlay] = useState(false)
-  const router = useRouter()
+
+  useEffect(() => {
+    if (searchParams.get('search')) {
+      setSearchInputHome(searchParams.get('search'))
+    }
+  }, [searchParams])
 
   const handleInputChange = (inputChange: string) => {
     setSearchInputHome(inputChange)
-    inputChange === '' ? setOverlay(false) : setOverlay(true)
+    if (inputChange === '') {
+      setOverlay(false)
+      router.replace(`${pathname}`)
+    } else {
+      setOverlay(true)
+      router.replace(`${pathname}?search=${inputChange}`)
+    }
   }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -34,7 +49,7 @@ export default function SearchBar({
     setOverlay(false)
     displayModal ? displayModal() : ''
     submitAction ? submitAction() : ''
-    router.push(`${submitRedirection}${searchInputHome}`)
+    submitRedirection ? router.push(`${submitRedirection}${searchInputHome}`) : ''
   }
 
   return (

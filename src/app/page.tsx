@@ -7,7 +7,7 @@ export default function Page() {
     <div className={style.main}>
       <h1 className={style.title}>Trouve ta mécanique</h1>
       <div className={style.input}>
-        <SearchBar submitRedirection="/category?search=" />
+        <SearchBar submitRedirection="/allCategories?search=" />
       </div>
       <MostViewedMoves />
     </div>
