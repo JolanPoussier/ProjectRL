@@ -38,7 +38,7 @@
 }
 
 .image {
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
     object-fit: fill;
     transition-duration: 0.5s;
 }
@@ -54,7 +54,14 @@
 .title {
     font-size: var(--title3);
     font-weight: var(--medium);
-    padding-bottom: 1em;
+    overflow: hidden;
+    line-height: 2.6rem;
+    max-height: 5.2rem;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+    display: -webkit-box;
 }
 
 .flag{
@@ -63,6 +70,35 @@
 
 .author {
     font-size: var(--normal);
+    padding-top: 1em;
     display: flex;
     align-items: center;
+}
+
+//////////////
+/// RESPONSIVE
+/////////////
+
+@media screen and (max-width: 1000px) {
+    .card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 100%;
+        height: 350px;
+    }
+
+    .link {
+        flex-direction: column;
+    }
+
+    .image {
+        width: 100%;
+        height: 200px;
+        border-radius: 12px 12px 0 0;
+    }
 }
