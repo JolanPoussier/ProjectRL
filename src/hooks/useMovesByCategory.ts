@@ -8,7 +8,7 @@ export default function useMovesByCategory({ category }: { category: string }) {
   const [moves, setMoves] = useState<Move[]>([])
 
   useEffect(() => {
-    category === 'allCategories'
+    category === 'toutescategories'
       ? fetchAllMoves()
           .then(data => {
             setMoves(data)

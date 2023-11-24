@@ -29,4 +29,16 @@ model Move {
   updatedAt   DateTime? @db.Timestamp(6)
   categoryId  Int
   category    Category  @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tutorials   Tutorial[]
+}
+
+model Tutorial {
+  id          Int       @id @default(autoincrement())
+  title       String    @db.VarChar(255)
+  author      String    @db.VarChar(255)
+  video       String    @db.VarChar(255)
+  thumbnail   String    @db.VarChar(255)
+  language    String    @db.VarChar(100)
+  createdAt   DateTime  @default(now()) @db.Timestamp(6)
+  moves       Move[]
 }

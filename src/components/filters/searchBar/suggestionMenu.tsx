@@ -17,7 +17,10 @@ export default function SuggestionSide({
 }) {
   const pathname = usePathname()
   const category = pathname.split('/')[1]
-  const movesToShow = useMovesByInputSearch(minimalizeText(searchInput), category === 'allCategories' ? '' : category)
+  const movesToShow = useMovesByInputSearch(
+    minimalizeText(searchInput),
+    category === 'toutescategories' ? '' : category,
+  )
 
   function handleClick() {
     resetInput('')
