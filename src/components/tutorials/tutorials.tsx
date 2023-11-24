@@ -13,7 +13,6 @@ export default function Tutorials({
     language: string
   }[]
 }) {
-  console.log
   return (
     <div className={style.main}>
       <h2 className={style.mainTitle}>Tutoriels</h2>
