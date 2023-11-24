@@ -1,0 +1,104 @@
+.main{
+    width: 100%;
+    margin: auto;
+    max-width: 1000px;
+    background-color: var(--first-color);
+    border-radius: 12px;
+    // padding: 0.5em;
+    margin-top: 4em;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainTitle{
+    font-size: var(--title1);
+    margin-bottom: 0.7em;
+}
+
+.card {
+    width: 100%;
+    height: 150px;
+    background-color: var(--second-color);
+    border-radius: 12px;
+    transition-duration: 0.5s;
+}
+
+.card:not(:last-child) {
+    margin-bottom: 2em;
+}
+
+.card:hover {
+    background-color: var(--hover-color);
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+}
+
+.image {
+    border-radius: 12px 0 0 12px;
+    object-fit: fill;
+    transition-duration: 0.5s;
+}
+
+.content {
+    padding-left: 1em;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.title {
+    font-size: var(--title3);
+    font-weight: var(--medium);
+    overflow: hidden;
+    line-height: 2.6rem;
+    max-height: 5.2rem;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+    display: -webkit-box;
+}
+
+.flag{
+    margin-left: 0.5em;
+}
+
+.author {
+    font-size: var(--normal);
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+}
+
+//////////////
+/// RESPONSIVE
+/////////////
+
+@media screen and (max-width: 1000px) {
+    .card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 100%;
+        height: 350px;
+    }
+
+    .link {
+        flex-direction: column;
+    }
+
+    .image {
+        width: 100%;
+        height: 200px;
+        border-radius: 12px 12px 0 0;
+    }
+}

@@ -1,28 +1,44 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import style from './searchBar.module.scss'
 import searchIcon from '@/assets/icons/searchIcon.png'
 import Image from 'next/image'
 import SuggestionSide from './suggestionMenu'
 import InputText from '@/UI/inputText/input'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 export default function SearchBar({
   displayModal,
   submitAction,
-  searchInput,
-  setSearchInput,
+  submitRedirection,
 }: {
   displayModal?: () => void
   submitAction?: () => void
-  searchInput: string
-  setSearchInput: React.Dispatch<React.SetStateAction<string>>
+  submitRedirection?: string
 }) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const [searchInputHome, setSearchInputHome] = useState<string>('')
   const [overlay, setOverlay] = useState(false)
 
+  useEffect(() => {
+    if (searchParams.get('search')) {
+      setSearchInputHome(searchParams.get('search'))
+    }
+  }, [searchParams])
+
   const handleInputChange = (inputChange: string) => {
-    setSearchInput(inputChange)
-    inputChange === '' ? setOverlay(false) : setOverlay(true)
+    setSearchInputHome(inputChange)
+    if (inputChange === '') {
+      setOverlay(false)
+      router.replace(`${pathname}`)
+    } else {
+      setOverlay(true)
+      router.replace(`${pathname}?search=${inputChange}`)
+    }
   }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -33,6 +49,7 @@ export default function SearchBar({
     setOverlay(false)
     displayModal ? displayModal() : ''
     submitAction ? submitAction() : ''
+    submitRedirection ? router.push(`${submitRedirection}${searchInputHome}`) : ''
   }
 
   return (
@@ -43,10 +60,10 @@ export default function SearchBar({
       ></div>
       <div className={style.formContainer}>
         <form onSubmit={handleSubmit}>
-          <div className={searchInput && overlay ? style.inputDivBorder : style.inputDiv}>
+          <div className={searchInputHome && overlay ? style.inputDivBorder : style.inputDiv}>
             <InputText
               placeholder="Trouve ta mécanique"
-              value={searchInput}
+              value={searchInputHome}
               onChange={handleInputChange}
               onClick={() => setOverlay(true)}
             />
@@ -55,10 +72,10 @@ export default function SearchBar({
             </button>
           </div>
         </form>
-        {searchInput && overlay && (
+        {searchInputHome && overlay && (
           <SuggestionSide
-            searchInput={searchInput}
-            resetInput={setSearchInput}
+            searchInput={searchInputHome}
+            resetInput={setSearchInputHome}
             displayModal={displayModal}
             setOverlay={setOverlay}
           />
