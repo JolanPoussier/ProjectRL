@@ -6,6 +6,7 @@ import SearchBar from './searchBar/searchBar'
 import filtersArrow from '@/assets/icons/filtersMobile.png'
 import { useState } from 'react'
 import Image from 'next/image'
+import { X } from 'lucide-react'
 
 export default function FiltersMobile({
   difficultyState,
@@ -27,7 +28,7 @@ export default function FiltersMobile({
       </button>
       <div className={displayFiltersMenu ? style.mainMobile_active : style.mainMobile}>
         <button className={style.closeButton} onClick={() => setdisplayFiltersMenu(!displayFiltersMenu)}>
-          x
+          <X size={30} />
         </button>
         <div className={style.searchBar}>
           <SearchBar displayModal={() => setdisplayFiltersMenu(!displayFiltersMenu)} />

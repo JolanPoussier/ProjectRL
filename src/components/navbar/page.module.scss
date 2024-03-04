@@ -4,8 +4,8 @@
 
 .main {
     width: 100%;
-    height: 85px;
-    background-color: var(--main-color);
+    height: 100px;
+    background-color: transparent;
     display: flex;
     padding-left: 0.5em;
     position: fixed;
@@ -15,12 +15,13 @@
 
 .isScrolled {
     border-bottom: 1.5px solid var(--second-color);
+        background-color: var(--main-color);
 }
 
 .container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .logo {
@@ -28,14 +29,32 @@
 }
 
 .element {
-    width: 130px;
+    width: auto;
     font-size: var(--normal);
     display: flex;
+    margin: 0 1.6em;
 }
 
-.element:hover {
-    background-color: var(--hover-color);
-    border-radius: 10px;
+.userButton {
+    margin: 0 1.5em;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid transparent;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--third-color);
+    transition: width 0.3s ease;
+}
+
+.link:hover::after {
+    width: 100%;
 }
 
 .link {
@@ -45,18 +64,22 @@
     height: 4em;
     display: flex;
     align-items: center;
-    border-bottom: 4px solid transparent;
+    border-bottom: 3px solid transparent;
     align-self: center;
     margin: auto;
     flex-grow: 4;
     justify-content: center;
+    position: relative;
 }
 
-.link_active {
-    @extend .link;
-    border-bottom: 4px solid var(--third-color);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+.link_active::after {
+    content: '';
+    position: absolute;
+    left: 0;    
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--third-color);
 }
 
 /////////////////
@@ -68,6 +91,11 @@
     display: none;
     justify-content: space-between;
     padding: 0 1em;
+}
+
+.rightSide {
+    display: flex;
+    justify-content: space-between;
 }
 
 .arrowFiltersFilling {
@@ -127,7 +155,7 @@
 .closeButton {
     @extend .burgerButton;
     position: absolute;
-    top: 5px;
+    top: 15px;
     left: 25px;
     font-size: 36px;
     color: white;
@@ -157,7 +185,7 @@
 //////////////
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     .main {
         display: none;
     }
@@ -169,13 +197,5 @@
     }
     .linkMobile:active {
         color: var(--third-color);
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .element {
-        width: auto;
-        margin-left: 1em;
-        margin-right: 1em;
     }
 }

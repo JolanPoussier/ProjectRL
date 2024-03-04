@@ -7,6 +7,7 @@ import Image from 'next/image'
 import logo from 'src/assets/logo/logo.png'
 import { Category } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import { User } from 'lucide-react'
 
 export default function NavBarComputer({ categories }: { categories: Category[] }) {
   const params = useParams()
@@ -37,13 +38,16 @@ export default function NavBarComputer({ categories }: { categories: Category[] 
           <div key={category.id} className={style.element}>
             <Link
               key={category.id}
-              className={`${params.category === category.name ? style.link_active : style.link}`}
+              className={`${style.link} ${params.category === category.name ? style.link_active : ''}`}
               href={`/${category.name}`}
             >
               {category.name}
             </Link>
           </div>
         ))}
+      </div>
+      <div className={style.userButton}>
+        <User size={30} />
       </div>
     </div>
   )

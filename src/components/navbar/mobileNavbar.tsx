@@ -8,6 +8,7 @@ import logo from 'src/assets/logo/logoMobile.png'
 import burger from '@/assets/icons/menu.png'
 import { useState } from 'react'
 import { Category } from '@prisma/client'
+import { User, X } from 'lucide-react'
 
 export default function MobileNavBar({ categories }: { categories: Category[] }) {
   const params = useParams()
@@ -33,28 +34,32 @@ export default function MobileNavBar({ categories }: { categories: Category[] })
           <Image src={logo} alt="Logo du site" width={90} height={90} />
         </Link>
       </div>
-
-      <button className={style.burgerButton} onClick={handleToggleBurger}>
-        <Image src={burger} alt="burger menu" width={50} height={50} />
-      </button>
-
-      <div className={toggleBurger ? style.menuBurger_active : style.menuBurger}>
-        <button className={style.closeButton} onClick={handleToggleBurger}>
-          x
+      <div className={style.rightSide}>
+        <div className={style.userButton}>
+          <User size={30} />
+        </div>
+        <button className={style.burgerButton} onClick={handleToggleBurger}>
+          <Image src={burger} alt="burger menu" width={50} height={50} />
         </button>
-        <div className={style.containerMobile}>
-          {categories.map(category => (
-            <div key={category.id} className={style.elementMobile}>
-              <Link
-                onClick={handleToggleBurger}
-                key={category.id}
-                className={params.category === category.name ? style.linkMobile_active : style.linkMobile}
-                href={`/${category.name}`}
-              >
-                {category.name}
-              </Link>
-            </div>
-          ))}
+
+        <div className={toggleBurger ? style.menuBurger_active : style.menuBurger}>
+          <button className={style.closeButton} onClick={handleToggleBurger}>
+            <X size={30} />
+          </button>
+          <div className={style.containerMobile}>
+            {categories.map(category => (
+              <div key={category.id} className={style.elementMobile}>
+                <Link
+                  onClick={handleToggleBurger}
+                  key={category.id}
+                  className={`${style.linkMobile} ${params.category === category.name ? style.linkMobile_active : ''}`}
+                  href={`/${category.name}`}
+                >
+                  {category.name}
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
