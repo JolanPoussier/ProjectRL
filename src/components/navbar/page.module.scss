@@ -4,12 +4,17 @@
 
 .main {
     width: 100%;
-    height: 5em;
-    background-color: var(--second-color);
+    height: 85px;
+    background-color: var(--main-color);
     display: flex;
     padding-left: 0.5em;
     position: fixed;
     z-index: 1;
+    border-bottom: 1.5px solid transparent;
+}
+
+.isScrolled {
+    border-bottom: 1.5px solid var(--second-color);
 }
 
 .container {

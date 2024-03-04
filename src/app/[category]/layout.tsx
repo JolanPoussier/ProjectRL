@@ -1,3 +1,5 @@
+import NavBar from '@/components/navbar/navbar'
+
 import style from './page.module.scss'
 
 export default function categoryLayout({
@@ -7,6 +9,8 @@ export default function categoryLayout({
 }) {
   return (
     <section className={style.layout}>
+      <NavBar />
+
       <div className={style.layoutContent}>{children}</div>
     </section>
   )
