@@ -16,7 +16,6 @@ export default function NavBarComputer({ categories }: { categories: Category[] 
   useEffect(() => {
     function handleScroll() {
       setIsScrolled(window.scrollY > 0)
-      console.log(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll)

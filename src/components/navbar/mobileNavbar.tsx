@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import logo from 'src/assets/logo/logoMobile.png'
 import burger from '@/assets/icons/menu.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Category } from '@prisma/client'
 import { User, X } from 'lucide-react'
 
@@ -14,13 +14,26 @@ export default function MobileNavBar({ categories }: { categories: Category[] })
   const params = useParams()
 
   const [toggleBurger, setToggleBurger] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    function handleScroll() {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   function handleToggleBurger() {
     setToggleBurger(!toggleBurger)
   }
 
   return (
-    <div className={style.mainMobile}>
+    <div className={`${style.mainMobile} ${isScrolled ? style.isScrolled : ''}`}>
       <div
         className={toggleBurger ? style.overlayMobile_active : style.overlayMobile}
         onClick={handleToggleBurger}

@@ -11,11 +11,12 @@
     position: fixed;
     z-index: 1;
     border-bottom: 1.5px solid transparent;
+    transition: border-bottom 0.2s ease, background-color 0.4s ease;
 }
 
 .isScrolled {
     border-bottom: 1.5px solid var(--second-color);
-        background-color: var(--main-color);
+    background-color: var(--main-color);
 }
 
 .container {
@@ -26,6 +27,7 @@
 
 .logo {
     align-self: center;
+    margin-left: 1.5em;
 }
 
 .element {
@@ -36,7 +38,7 @@
 }
 
 .userButton {
-    margin: 0 1.5em;
+    margin: 0 2em;
     display: flex;
     align-items: center;
     border-bottom: 3px solid transparent;
@@ -197,5 +199,11 @@
     }
     .linkMobile:active {
         color: var(--third-color);
+    }
+    .userButton {
+        margin: 0 0.3em;
+    }
+    .logo {
+        margin-left: 35px;
     }
 }

@@ -6,7 +6,6 @@ export default function Page() {
   return (
     <div className={style.main}>
       <div className={style.background}></div>
-      <h1 className={style.title}>Trouve ta mécanique</h1>
       <div className={style.input}>
         <SearchBar submitRedirection="/toutescategories?search=" />
       </div>
