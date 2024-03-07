@@ -14,9 +14,18 @@
     transition: border-bottom 0.2s ease, background-color 0.4s ease;
 }
 
+.lightModeCSS {
+  
+        background-color: var(--main-color);
+    
+}
+
 .isScrolled {
     border-bottom: 1.5px solid var(--second-color);
     background-color: var(--main-color);
+    .link{
+        color: var(--text-color);
+    }
 }
 
 .container {
@@ -37,11 +46,24 @@
     margin: 0 1.6em;
 }
 
-.userButton {
+.lightButton {
+    color: var(--text-color);
+    text-decoration: none;
+    background: none;
+    border: none;
     margin: 0 2em;
     display: flex;
     align-items: center;
     border-bottom: 3px solid transparent;
+}
+
+.lightButton:hover {
+    cursor: pointer;
+    .lightIcon {
+        border-radius: 10px;
+        background-color: rgba(var(--text-color));
+        transition-duration: 0.5s;
+    }
 }
 
 .link::after {
@@ -62,8 +84,8 @@
 .link {
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
     height: 4em;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     border-bottom: 3px solid transparent;
@@ -93,6 +115,7 @@
     display: none;
     justify-content: space-between;
     padding: 0 1em;
+    z-index: 2;
 }
 
 .rightSide {
@@ -113,7 +136,7 @@
     z-index: 3;
     top: 0;
     right: -250px;
-    background: rgba($color: #000000, $alpha: 0.9) ;
+    background: var(--modal-color) ;
     padding-top: 60px;
     transition: right 0.5s ease;
     overflow-y: auto;
@@ -152,6 +175,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    color: var(--text-color)
 }
 
 .closeButton {
@@ -160,7 +184,7 @@
     top: 15px;
     left: 25px;
     font-size: 36px;
-    color: white;
+    color: var(--text-color);
 }
 
 //OVERLAY
@@ -200,7 +224,7 @@
     .linkMobile:active {
         color: var(--third-color);
     }
-    .userButton {
+    .lightButton {
         margin: 0 0.3em;
     }
     .logo {

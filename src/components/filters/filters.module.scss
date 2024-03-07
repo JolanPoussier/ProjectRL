@@ -18,7 +18,7 @@
     z-index: 3;
     top: 0;
     left: -100vw;
-    background: rgba($color: #000000, $alpha: 0.95) ;
+    background: var(--modal-color) ;
     transition: left 0.5s ease;
     padding: 2em;
     padding-top: 60px;
@@ -38,7 +38,7 @@
     top: 5px;
     right: 25px;
     font-size: 36px;
-    color: white;
+    color: var(--text-color);
 }
 
 .searchBar {
@@ -54,6 +54,7 @@
     border: none;
     cursor: pointer;
     padding-left: 25px;
+    color: var(--text-color);
 }
 
 ///////////////

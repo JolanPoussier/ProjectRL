@@ -30,6 +30,10 @@ export default function SearchBar({
     }
   }, [searchParams])
 
+  useEffect(() => {
+    document.body.classList.toggle('no-scroll-y', overlay)
+  }, [overlay])
+
   const handleInputChange = (inputChange: string) => {
     setSearchInputHome(inputChange)
     if (inputChange === '') {

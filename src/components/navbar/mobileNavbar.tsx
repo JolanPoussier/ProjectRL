@@ -5,16 +5,18 @@ import style from './page.module.scss'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import logo from 'src/assets/logo/logoMobile.png'
-import burger from '@/assets/icons/menu.png'
+import logoLight from 'src/assets/logo/logoMobile_light.png'
 import { useEffect, useState } from 'react'
 import { Category } from '@prisma/client'
-import { User, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import ThemeButton from './themeButton'
 
 export default function MobileNavBar({ categories }: { categories: Category[] }) {
   const params = useParams()
 
   const [toggleBurger, setToggleBurger] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
     function handleScroll() {
@@ -44,15 +46,17 @@ export default function MobileNavBar({ categories }: { categories: Category[] })
 
       <div className={style.logo}>
         <Link href={'/'}>
-          <Image src={logo} alt="Logo du site" width={90} height={90} />
+          {isDark ? (
+            <Image src={logo} alt="Logo du site" width={90} height={90} />
+          ) : (
+            <Image src={logoLight} alt="Logo du site" width={90} height={90} />
+          )}
         </Link>
       </div>
       <div className={style.rightSide}>
-        <div className={style.userButton}>
-          <User size={30} />
-        </div>
+        <ThemeButton isDark={isDark} setIsDark={setIsDark} />
         <button className={style.burgerButton} onClick={handleToggleBurger}>
-          <Image src={burger} alt="burger menu" width={50} height={50} />
+          <Menu width={50} height={50} />
         </button>
 
         <div className={toggleBurger ? style.menuBurger_active : style.menuBurger}>
