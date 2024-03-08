@@ -78,22 +78,3 @@
     background-color: beige;
     border-radius: 0 0 10px 10px;
 }
-
-.overlaySearchBar_active + .formContainer {
-    z-index: 3;
-}
-
-.overlaySearchBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-}
-
-.overlaySearchBar_active {
-    @extend .overlaySearchBar;
-    display: block;
-}

@@ -13,8 +13,8 @@
     // Light mode
     --main-color-light: white;
     --second-color-light: #d0d0d0;
-    --third-color-light: #27d0fa;
-    --hover-color-light: #46a8f8;
+    --third-color-light: #743EED;
+    --hover-color-light: #aaaaaa;
     --text-color-light: black;
     --modal-color-light: white;
 
@@ -42,14 +42,6 @@
     padding: 0;
     margin: 0;
 }
-  
-html,
-body {
-  max-width: 100vw;
-  background-color: var(--main-color);
-  color: var(--text-color);
-}
-
 
 .dark-theme {
   --main-color: var(--main-color-dark);
@@ -67,4 +59,11 @@ body {
   --hover-color: var(--hover-color-light);
   --text-color: var(--text-color-light);
   --modal-color: var(--modal-color-light);
+}
+
+html,
+body {
+  max-width: 100vw;
+  background-color: var(--main-color);
+  color: var(--text-color);
 }

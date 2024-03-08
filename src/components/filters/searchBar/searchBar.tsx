@@ -30,10 +30,6 @@ export default function SearchBar({
     }
   }, [searchParams])
 
-  useEffect(() => {
-    document.body.classList.toggle('no-scroll-y', overlay)
-  }, [overlay])
-
   const handleInputChange = (inputChange: string) => {
     setSearchInputHome(inputChange)
     if (inputChange === '') {
@@ -58,10 +54,6 @@ export default function SearchBar({
 
   return (
     <>
-      <div
-        className={overlay ? style.overlaySearchBar_active : style.overlaySearchBar}
-        onClick={() => setOverlay(false)}
-      ></div>
       <div className={style.formContainer}>
         <form onSubmit={handleSubmit}>
           <div className={searchInputHome && overlay ? style.inputDivBorder : style.inputDiv}>
@@ -69,7 +61,8 @@ export default function SearchBar({
               placeholder="Trouve ta mécanique"
               value={searchInputHome}
               onChange={handleInputChange}
-              onClick={() => setOverlay(true)}
+              onFocus={() => setOverlay(true)}
+              onBlur={() => setOverlay(false)}
             />
             <button onClick={handleClickToSubmit} className={style.searchIcon}>
               <Image alt="searchIcon" src={searchIcon} width={30} height={30} />

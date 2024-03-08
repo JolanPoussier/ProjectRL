@@ -5,9 +5,11 @@ type Props = {
   value?: string
   onChange?: (text: string) => void
   onClick?: () => void
+  onFocus?: () => void
+  onBlur?: () => void
 }
 
-export default function InputText({ placeholder, value, onChange, onClick }: Props) {
+export default function InputText({ placeholder, value, onChange, onClick, onFocus, onBlur }: Props) {
   return (
     <input
       className={style.input}
@@ -16,6 +18,8 @@ export default function InputText({ placeholder, value, onChange, onClick }: Pro
       value={value}
       onChange={e => onChange?.(e.target.value)}
       onClick={() => onClick?.()}
+      onFocus={() => onFocus?.()}
+      onBlur={() => onBlur?.()}
     />
   )
 }

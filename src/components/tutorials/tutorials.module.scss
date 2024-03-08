@@ -29,6 +29,7 @@
 
 .card:hover {
     background-color: var(--hover-color);
+    box-shadow: 0 3px 4px 1px var(--second-color);
 }
 
 .link {

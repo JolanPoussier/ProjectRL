@@ -15,9 +15,9 @@
 }
 
 .lightModeCSS {
-  
-        background-color: var(--main-color);
-    
+    background-color: var(--main-color);
+    border-bottom: 1.5px solid var(--second-color);
+    box-shadow: 0 4px 4px 0 var(--second-color);
 }
 
 .isScrolled {
