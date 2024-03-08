@@ -5,7 +5,7 @@ import MostViewedMoves from '@/components/mostViewedMoves/mostViewedMoves'
 export default function Page() {
   return (
     <div className={style.main}>
-      <h1 className={style.title}>Trouve ta mécanique</h1>
+      <div className={style.background}></div>
       <div className={style.input}>
         <SearchBar submitRedirection="/toutescategories?search=" />
       </div>

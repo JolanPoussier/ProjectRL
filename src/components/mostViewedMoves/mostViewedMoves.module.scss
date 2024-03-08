@@ -1,10 +1,12 @@
 .main {
-    height: 80vh;
-    margin-top: 6em;
+    width: 97%;
+    margin: auto;
+    padding: 5em 0;
 }
 
 .title {
-    font-size: var(--title2);
+    margin-bottom: 1em;
+    font-size: var(--title1);
     font-weight: var(--semi-bold);
     text-align: center;
 }
@@ -21,23 +23,70 @@
 }
 
 .element {
-    width: 32%;
-    height: auto;
-    margin-bottom: 2em;
+    height: 50vh;
 }
 
 .link {
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
+}
+
+
+//////////////////
+/// CAROUSSEL ////
+/////////////////
+
+.slider {
+    position: relative;
+    padding: 0 5em;
+}
+
+.slider::after {
+    content: '';
+    position: absolute;
+    top:0;
+    right: 5em;
+    width: 30px;
+    height: 100%;
+    background: -webkit-linear-gradient(right, var(--main-color), rgba(255, 255, 255, 0));
+    background: linear-gradient(to left, var(--main-color), rgba(255, 255, 255, 0));
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    top:0;
+    left: 5em;
+    width: 20px;
+    height: 100%;
+    background: -webkit-linear-gradient(left, var(--main-color), rgba(255, 255, 255, 0));
+    background: linear-gradient(to right, var(--main-color), rgba(255, 255, 255, 0));
+    z-index: 1;
+}
+
+.chevronRight {
+    position: absolute;
+    color: var(--text-color);
+    opacity: 0.3;
+    right: 0;
+    top: calc(50vh/2 - 23px);
+}
+
+.chevronLeft {
+    @extend .chevronRight;
+    left: 0;
+}
+
+.chevronLeft:hover, .chevronRight:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition-duration: 0.7s;
 }
 
 @media screen and (max-width: 1400px) {
     .element {
         width: 48%;
     }
-    // .element:nth-last-child(-n+2) {
-    //     display: none;
-    // }
 }
 
 @media screen and (max-width: 1000px) {
@@ -52,6 +101,18 @@
     .element {
         width:100%;
     }
+    .main {
+        width: 100%;
+    }
+    .slider {
+        padding: 0 2em;
+    }
+    .slider::before {
+        left: 2em;
+    }
+    .slider::after {
+        right: 2em;
+    }
 }
 
 
@@ -61,51 +122,64 @@
 
 .card {
     width: 100%;
-    height: 310px;
-    margin: auto;
-    background-color: var(--second-color);
+    height: 100%;
     border-radius: 12px;
-    margin-bottom: 3em;
-    transition-duration: 0.5s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card:hover {
-    background-color: var(--hover-color);
+.link:hover {
+    width: 95%;
+    height: 95%;
+    .image {
+        opacity: 1;
+    }
 }
 
 .link {
-    color: white;
+    transition-duration: 0.5s;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    color: var(--text-color);
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .image {
     width: 100%;
-    height: 200px;
-    border-radius: 12px 12px 0 0;
+    height: 100%;
+    border-radius: 12px;
     object-fit: cover;
     transition-duration: 0.5s;
+    opacity: 0.65;
 }
 
-.content {
-    padding: 1em;
-}
 
 .header {
-    margin-bottom: 1em;
+    margin: 0 0 1em 1em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: absolute;
+    bottom: 0;
 }
 
-.title {
-    font-size: var(--title1);
+.titleCard {
+    font-size: var(--title2);
     font-weight: var(--semi-bold);
-    margin-right: 15px;
 }
 
 .stars * {
     margin-top: 8px;
     margin-right: 4px;
+    display: inline-block;
+}
+
+.header .stars img {
+    display: inline;
 }

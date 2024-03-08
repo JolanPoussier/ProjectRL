@@ -3,9 +3,8 @@
 import style from './filters.module.scss'
 import Difficulty from './difficulty/difficulty'
 import SearchBar from './searchBar/searchBar'
-import filtersArrow from '@/assets/icons/filtersMobile.png'
 import { useState } from 'react'
-import Image from 'next/image'
+import { Play, X } from 'lucide-react'
 
 export default function FiltersMobile({
   difficultyState,
@@ -23,11 +22,11 @@ export default function FiltersMobile({
   return (
     <>
       <button className={style.filtersButton} onClick={handleDisplayFiltersMenu}>
-        <Image src={filtersArrow} alt="Logo du site" width={35} height={35} />
+        <Play strokeWidth={2} width={35} height={35} />
       </button>
       <div className={displayFiltersMenu ? style.mainMobile_active : style.mainMobile}>
         <button className={style.closeButton} onClick={() => setdisplayFiltersMenu(!displayFiltersMenu)}>
-          x
+          <X size={30} />
         </button>
         <div className={style.searchBar}>
           <SearchBar displayModal={() => setdisplayFiltersMenu(!displayFiltersMenu)} />

@@ -10,6 +10,8 @@
     background-color: white;
     display: flex;
     align-items: center;
+    border: 0.1px solid black;
+    box-shadow: 0 4px 6px 0 var(--second-color);
 }
 
 .inputDivBorder {
@@ -31,9 +33,10 @@
 
 .searchIcon {
     width: 10%;
+    margin-right: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     background-color: transparent;
     border: none;
 }
@@ -74,23 +77,4 @@
 .suggestionLinks:hover {
     background-color: beige;
     border-radius: 0 0 10px 10px;
-}
-
-.overlaySearchBar_active + .formContainer {
-    z-index: 3;
-}
-
-.overlaySearchBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-}
-
-.overlaySearchBar_active {
-    @extend .overlaySearchBar;
-    display: block;
 }

@@ -21,20 +21,16 @@ export default function MostViewedMoveCard({
   return (
     <div className={style.card}>
       <Link className={style.link} href={`/${category.name}/${slug}`}>
-        <div className={style.imageContainer}>
-          <Image
-            className={style.image}
-            alt={`Image du move ${title}`}
-            src={`/img/thumbnails/${thumbnail}_th.png`}
-            width={150}
-            height={150}
-          />
-        </div>
-        <div className={style.content}>
-          <div className={style.header}>
-            <h3 className={style.title}>{title}</h3>
-            <div className={style.stars}>{starGenerator({ star })}</div>
-          </div>
+        <Image
+          className={style.image}
+          alt={`Image du move ${title}`}
+          src={`/img/thumbnails/${thumbnail}_th.png`}
+          width={150}
+          height={150}
+        />
+        <div className={style.header}>
+          <h3 className={style.titleCard}>{title}</h3>
+          <div className={style.stars}>{starGenerator({ star })}</div>
         </div>
       </Link>
     </div>

@@ -8,11 +8,12 @@
 }
 
 .card:hover {
+    box-shadow: 0 3px 4px 1px var(--second-color);
     background-color: var(--hover-color);
 }
 
 .link {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     display: flex;
 }
