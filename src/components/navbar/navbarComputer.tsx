@@ -13,7 +13,7 @@ import ThemeButton from './themeButton'
 export default function NavBarComputer({ categories }: { categories: Category[] }) {
   const params = useParams()
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
     function handleScroll() {
