@@ -16,7 +16,7 @@ export default function MobileNavBar({ categories }: { categories: Category[] })
 
   const [toggleBurger, setToggleBurger] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
     function handleScroll() {
