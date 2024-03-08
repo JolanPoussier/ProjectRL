@@ -6,7 +6,6 @@ import updateLocalStorage from '@/utils/updateLocalStorage'
 export default function ThemeButton({ isDark, setIsDark }: { isDark: boolean; setIsDark: (arg: boolean) => void }) {
   useEffect(() => {
     const theme = updateLocalStorage(null, 'theme') as unknown
-    console.log(theme)
     setIsDark(theme === true)
   }, [setIsDark])
   useEffect(() => {
