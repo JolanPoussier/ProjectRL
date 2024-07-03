@@ -62,7 +62,11 @@ export default function SearchBar({
               value={searchInputHome}
               onChange={handleInputChange}
               onFocus={() => setOverlay(true)}
-              onBlur={() => setOverlay(false)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setOverlay(false)
+                }, 120)
+              }}
             />
             <button onClick={handleClickToSubmit} className={style.searchIcon}>
               <Image alt="searchIcon" src={searchIcon} width={30} height={30} />
