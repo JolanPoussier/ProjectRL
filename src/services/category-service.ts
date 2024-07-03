@@ -8,9 +8,9 @@ class CategoryService {
     this.prismaClient = getPrismaClient()
   }
 
-  public static create(): CategoryService {
-    return new CategoryService()
-  }
+  // public static create(): CategoryService {
+  //   return new CategoryService()
+  // }
 
   // CRUD methods
   public async getCategories(): Promise<Category[]> {
