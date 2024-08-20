@@ -25,8 +25,8 @@ export default function MostViewedMoveCard({
           className={style.image}
           alt={`Image du move ${title}`}
           src={`/img/thumbnails/${thumbnail}_th.png`}
-          width={150}
-          height={150}
+          width={550}
+          height={550}
         />
         <div className={style.header}>
           <h3 className={style.titleCard}>{title}</h3>

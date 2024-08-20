@@ -31,8 +31,8 @@ export default function HorizontalMoveCard({
             className={style.image}
             alt={`Image du move ${title}`}
             src={`/img/thumbnails/${thumbnail}_th.png`}
-            width={150}
-            height={150}
+            width={350}
+            height={350}
           />
         </div>
         <div className={style.content}>
