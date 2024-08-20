@@ -1,6 +1,7 @@
 import NavBar from '@/components/navbar/navbar'
 import './globals.scss'
 import { League_Spartan } from 'next/font/google'
+import Footer from '@/components/footer/footer'
 
 const leagueSpartan = League_Spartan({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={leagueSpartan.className}>
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   )
